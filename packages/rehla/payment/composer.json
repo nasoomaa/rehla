@@ -1,0 +1,28 @@
+{
+    "name": "rehla/payment",
+    "description": "Rehla Payment: methods, records, state, reconciliation hooks",
+    "type": "library",
+    "require": {
+        "php": "^8.5",
+        "laravel/framework": "^13.0",
+        "rehla/core": "*",
+        "rehla/sales": "*",
+        "rehla/media": "*"
+    },
+    "require-dev": {
+        "pestphp/pest": "^4.0",
+        "orchestra/testbench": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rehla\\Payment\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rehla\\Payment\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

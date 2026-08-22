@@ -1,0 +1,27 @@
+{
+    "name": "rehla/image-cache",
+    "description": "Rehla ImageCache: UUID+preset-based image transformation, path-traversal-safe",
+    "type": "library",
+    "require": {
+        "php": "^8.5",
+        "laravel/framework": "^13.0",
+        "rehla/core": "*",
+        "rehla/media": "*"
+    },
+    "require-dev": {
+        "pestphp/pest": "^4.0",
+        "orchestra/testbench": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rehla\\ImageCache\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rehla\\ImageCache\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

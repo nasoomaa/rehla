@@ -1,0 +1,33 @@
+{
+    "name": "rehla/api",
+    "description": "Rehla API: Flutter presentation layer, versioned REST API, Sanctum auth",
+    "type": "library",
+    "require": {
+        "php": "^8.5",
+        "laravel/framework": "^13.0",
+        "rehla/core": "*",
+        "rehla/catalog": "*",
+        "rehla/customers": "*",
+        "rehla/cart-rule": "*",
+        "rehla/checkout": "*",
+        "rehla/sales": "*",
+        "rehla/payment": "*",
+        "rehla/applications": "*"
+    },
+    "require-dev": {
+        "pestphp/pest": "^4.0",
+        "orchestra/testbench": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rehla\\Api\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rehla\\Api\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

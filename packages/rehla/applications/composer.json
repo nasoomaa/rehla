@@ -1,0 +1,29 @@
+{
+    "name": "rehla/applications",
+    "description": "Rehla Applications: VisaApplication, Applicant, PassportData, documents, status",
+    "type": "library",
+    "require": {
+        "php": "^8.5",
+        "laravel/framework": "^13.0",
+        "rehla/core": "*",
+        "rehla/sales": "*",
+        "rehla/customers": "*",
+        "rehla/media": "*"
+    },
+    "require-dev": {
+        "pestphp/pest": "^4.0",
+        "orchestra/testbench": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rehla\\Applications\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rehla\\Applications\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
