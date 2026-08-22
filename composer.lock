@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f792df53bcdf87a8557329f39658b0ac",
+    "content-hash": "c081c9b0df6f3c56e19a6a904fefedd1",
     "packages": [
         {
             "name": "brick/math",
@@ -3258,6 +3258,601 @@
                 "source": "https://github.com/ramsey/uuid/tree/4.9.3"
             },
             "time": "2026-06-18T03:57:49+00:00"
+        },
+        {
+            "name": "rehla/admin-users",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/admin-users",
+                "reference": "6df16fbff75ea30b64f47852e805d72b9d02a409"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5",
+                "rehla/core": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\AdminUsers\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\AdminUsers\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla Admin Users: admin model, roles, spatie permission bridge, 2FA storage",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "rehla/api",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/api",
+                "reference": "90b7b907c5ed9fdde9f732da52e362b18c3703b2"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5",
+                "rehla/applications": "*",
+                "rehla/cart-rule": "*",
+                "rehla/catalog": "*",
+                "rehla/checkout": "*",
+                "rehla/core": "*",
+                "rehla/customers": "*",
+                "rehla/payment": "*",
+                "rehla/sales": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\Api\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\Api\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla API: Flutter presentation layer, versioned REST API, Sanctum auth",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "rehla/applications",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/applications",
+                "reference": "34efa3b3be86563ee7338075c474b729a41ecaf4"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5",
+                "rehla/core": "*",
+                "rehla/customers": "*",
+                "rehla/media": "*",
+                "rehla/sales": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\Applications\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\Applications\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla Applications: VisaApplication, Applicant, PassportData, documents, status",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "rehla/audit-log",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/audit-log",
+                "reference": "9cb8a2921b644d528bc99b4c4a836ec9e0df1017"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5",
+                "rehla/core": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\AuditLog\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\AuditLog\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla Audit Log: privileged operation auditing, observable failure handling",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "rehla/cart-rule",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/cart-rule",
+                "reference": "db6310878167a627c89df98572904b7aa9c8af1f"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5",
+                "rehla/catalog": "*",
+                "rehla/core": "*",
+                "rehla/customers": "*",
+                "rehla/rule": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\CartRule\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\CartRule\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla CartRule: promotions, coupons, discount evaluation via CartRuleContext",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "rehla/catalog",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/catalog",
+                "reference": "9b37765fd5ae5aa2b5e1afefdc4186b3717f47a0"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5",
+                "rehla/core": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\Catalog\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\Catalog\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla Catalog: categories, services/products, components, pricing",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "rehla/checkout",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/checkout",
+                "reference": "07e4e2a2643134402f92039adfb0d6208c128204"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5",
+                "rehla/cart-rule": "*",
+                "rehla/catalog": "*",
+                "rehla/core": "*",
+                "rehla/customers": "*",
+                "rehla/payment": "*",
+                "rehla/sales": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\Checkout\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\Checkout\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla Checkout: Cart, totals pipeline, checkout orchestrator, idempotency",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "rehla/core",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/core",
+                "reference": "636d87e5d06e7152095e845bc4532be71cb9678b"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\Core\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\Core\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla Core: ACL, Menu, SystemConfig, Locale, Currency, shared primitives",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "rehla/customers",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/customers",
+                "reference": "fd2137118fd538e66f139268cb1638676ae73aa6"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5",
+                "rehla/core": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\Customers\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\Customers\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla Customers domain: account, profile, status",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "rehla/dashboard",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/dashboard",
+                "reference": "b48d28409f9ada3ee608fd93debc8f4e5abfe441"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5",
+                "rehla/admin-users": "*",
+                "rehla/applications": "*",
+                "rehla/audit-log": "*",
+                "rehla/cart-rule": "*",
+                "rehla/catalog": "*",
+                "rehla/checkout": "*",
+                "rehla/core": "*",
+                "rehla/customers": "*",
+                "rehla/datagrid": "*",
+                "rehla/image-cache": "*",
+                "rehla/media": "*",
+                "rehla/payment": "*",
+                "rehla/sales": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\Dashboard\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\Dashboard\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla Dashboard: Admin presentation layer — routes, controllers, views, DataGrids",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "rehla/datagrid",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/datagrid",
+                "reference": "c7b004a8a99f6334d617ff969c9380e12880165a"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5",
+                "rehla/core": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\Datagrid\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\Datagrid\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla DataGrid engine: query, filter, sort, pagination, mass-actions",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "rehla/image-cache",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/image-cache",
+                "reference": "23a7ba1e1995a02fce0a8e249d334401b8f8b971"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5",
+                "rehla/core": "*",
+                "rehla/media": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\ImageCache\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\ImageCache\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla ImageCache: UUID+preset-based image transformation, path-traversal-safe",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "rehla/media",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/media",
+                "reference": "2a8a1dcb9eeefa3fc95d866505192376b16212d4"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5",
+                "rehla/core": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\Media\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\Media\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla Media: public/private file storage, secure download, MIME validation",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "rehla/notifications",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/notifications",
+                "reference": "4c6ccb37ce267ffe92be3bcc3e302706db3c170f"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5",
+                "rehla/core": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\Notifications\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\Notifications\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla Notifications: queued dispatch, domain event listeners, retry tracking",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "rehla/payment",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/payment",
+                "reference": "e236506b7d36793636e9a364ba8cab1e43d14b50"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5",
+                "rehla/core": "*",
+                "rehla/media": "*",
+                "rehla/sales": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\Payment\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\Payment\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla Payment: methods, records, state, reconciliation hooks",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "rehla/rule",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/rule",
+                "reference": "6184032f278f02d9d09c292b35959eda9035becd"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5",
+                "rehla/core": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\Rule\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\Rule\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla Rule engine: conditions, groups, operators, evaluator",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "rehla/sales",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/rehla/sales",
+                "reference": "f2b5f6de164e864e3ef81466a75a1dcf6b7dc759"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.5",
+                "rehla/catalog": "*",
+                "rehla/core": "*",
+                "rehla/customers": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "pestphp/pest": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rehla\\Sales\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Rehla\\Sales\\Tests\\": "tests/"
+                }
+            },
+            "description": "Rehla Sales: Order, OrderItem, state machine, status history, cancellation",
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "symfony/clock",
@@ -10185,7 +10780,25 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "rehla/admin-users": 20,
+        "rehla/api": 20,
+        "rehla/applications": 20,
+        "rehla/audit-log": 20,
+        "rehla/cart-rule": 20,
+        "rehla/catalog": 20,
+        "rehla/checkout": 20,
+        "rehla/core": 20,
+        "rehla/customers": 20,
+        "rehla/dashboard": 20,
+        "rehla/datagrid": 20,
+        "rehla/image-cache": 20,
+        "rehla/media": 20,
+        "rehla/notifications": 20,
+        "rehla/payment": 20,
+        "rehla/rule": 20,
+        "rehla/sales": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

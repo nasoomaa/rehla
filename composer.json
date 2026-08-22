@@ -3,12 +3,32 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "keywords": [
+        "laravel",
+        "framework"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.3",
         "laravel/framework": "^13.17",
-        "laravel/tinker": "^3.0"
+        "laravel/tinker": "^3.0",
+        "rehla/core": "*@dev",
+        "rehla/datagrid": "*@dev",
+        "rehla/rule": "*@dev",
+        "rehla/media": "*@dev",
+        "rehla/image-cache": "*@dev",
+        "rehla/customers": "*@dev",
+        "rehla/admin-users": "*@dev",
+        "rehla/catalog": "*@dev",
+        "rehla/cart-rule": "*@dev",
+        "rehla/sales": "*@dev",
+        "rehla/payment": "*@dev",
+        "rehla/checkout": "*@dev",
+        "rehla/applications": "*@dev",
+        "rehla/notifications": "*@dev",
+        "rehla/audit-log": "*@dev",
+        "rehla/dashboard": "*@dev",
+        "rehla/api": "*@dev"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -85,5 +105,75 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/rehla/core"
+        },
+        {
+            "type": "path",
+            "url": "packages/rehla/datagrid"
+        },
+        {
+            "type": "path",
+            "url": "packages/rehla/rule"
+        },
+        {
+            "type": "path",
+            "url": "packages/rehla/media"
+        },
+        {
+            "type": "path",
+            "url": "packages/rehla/image-cache"
+        },
+        {
+            "type": "path",
+            "url": "packages/rehla/customers"
+        },
+        {
+            "type": "path",
+            "url": "packages/rehla/admin-users"
+        },
+        {
+            "type": "path",
+            "url": "packages/rehla/catalog"
+        },
+        {
+            "type": "path",
+            "url": "packages/rehla/cart-rule"
+        },
+        {
+            "type": "path",
+            "url": "packages/rehla/sales"
+        },
+        {
+            "type": "path",
+            "url": "packages/rehla/payment"
+        },
+        {
+            "type": "path",
+            "url": "packages/rehla/checkout"
+        },
+        {
+            "type": "path",
+            "url": "packages/rehla/applications"
+        },
+        {
+            "type": "path",
+            "url": "packages/rehla/notifications"
+        },
+        {
+            "type": "path",
+            "url": "packages/rehla/audit-log"
+        },
+        {
+            "type": "path",
+            "url": "packages/rehla/dashboard"
+        },
+        {
+            "type": "path",
+            "url": "packages/rehla/api"
+        }
+    ]
 }
