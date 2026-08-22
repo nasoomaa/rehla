@@ -1,0 +1,50 @@
+docs/superpowers/
+├── README.md
+├── EXECUTION-ORDER.md
+├── RUNBOOK.md
+├── manifest.json
+├── evidence/
+│   └── README.md
+├── specs/
+│   ├── 2026-08-22-rehla-platform-design.md
+│   ├── foundation/rehla-foundation-design.md
+│   ├── core/rehla-core-design.md
+│   ├── datagrid/rehla-datagrid-design.md
+│   ├── rule/rehla-rule-design.md
+│   ├── media/rehla-media-design.md
+│   ├── image-cache/rehla-image-cache-design.md
+│   ├── dashboard-foundation/rehla-dashboard-foundation-design.md
+│   ├── admin-users/rehla-admin-users-design.md
+│   ├── customers/rehla-customers-design.md
+│   ├── catalog/rehla-catalog-design.md
+│   ├── cart-rule/rehla-cart-rule-design.md
+│   ├── checkout/rehla-checkout-design.md
+│   ├── sales/rehla-sales-design.md
+│   ├── payment/rehla-payment-design.md
+│   ├── applications/rehla-applications-design.md
+│   ├── notifications/rehla-notifications-design.md
+│   ├── audit-log/rehla-audit-log-design.md
+│   ├── api/rehla-api-design.md
+│   ├── dashboard-integration/rehla-dashboard-integration-design.md
+│   └── release-hardening/rehla-release-hardening-design.md
+└── plans/
+    ├── foundation/rehla-foundation-implementation.md
+    ├── core/rehla-core-implementation.md
+    ├── datagrid/rehla-datagrid-implementation.md
+    ├── rule/rehla-rule-implementation.md
+    ├── media/rehla-media-implementation.md
+    ├── image-cache/rehla-image-cache-implementation.md
+    ├── dashboard-foundation/rehla-dashboard-foundation-implementation.md
+    ├── admin-users/rehla-admin-users-implementation.md
+    ├── customers/rehla-customers-implementation.md
+    ├── catalog/rehla-catalog-implementation.md
+    ├── cart-rule/rehla-cart-rule-implementation.md
+    ├── checkout/rehla-checkout-implementation.md
+    ├── sales/rehla-sales-implementation.md
+    ├── payment/rehla-payment-implementation.md
+    ├── applications/rehla-applications-implementation.md
+    ├── notifications/rehla-notifications-implementation.md
+    ├── audit-log/rehla-audit-log-implementation.md
+    ├── api/rehla-api-implementation.md
+    ├── dashboard-integration/rehla-dashboard-integration-implementation.md
+    └── release-hardening/rehla-release-hardening-implementation.md

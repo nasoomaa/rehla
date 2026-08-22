@@ -1,0 +1,273 @@
+{
+  "runtime": {
+    "php": "8.5.4",
+    "composer": "2.9.5",
+    "laravel": "13.x",
+    "database": "PostgreSQL"
+  },
+  "master_spec": "docs/superpowers/specs/2026-08-22-rehla-platform-design.md",
+  "units": [
+    {
+      "order": "00",
+      "slug": "foundation",
+      "title": "Rehla Foundation",
+      "package": null,
+      "dependencies": [],
+      "spec": "docs/superpowers/specs/foundation/rehla-foundation-design.md",
+      "plan": "docs/superpowers/plans/foundation/rehla-foundation-implementation.md"
+    },
+    {
+      "order": "01",
+      "slug": "core",
+      "title": "Rehla Core",
+      "package": "Core",
+      "dependencies": [
+        "foundation"
+      ],
+      "spec": "docs/superpowers/specs/core/rehla-core-design.md",
+      "plan": "docs/superpowers/plans/core/rehla-core-implementation.md"
+    },
+    {
+      "order": "02",
+      "slug": "datagrid",
+      "title": "Rehla DataGrid",
+      "package": "DataGrid",
+      "dependencies": [
+        "core"
+      ],
+      "spec": "docs/superpowers/specs/datagrid/rehla-datagrid-design.md",
+      "plan": "docs/superpowers/plans/datagrid/rehla-datagrid-implementation.md"
+    },
+    {
+      "order": "03",
+      "slug": "rule",
+      "title": "Rehla Rule",
+      "package": "Rule",
+      "dependencies": [
+        "core"
+      ],
+      "spec": "docs/superpowers/specs/rule/rehla-rule-design.md",
+      "plan": "docs/superpowers/plans/rule/rehla-rule-implementation.md"
+    },
+    {
+      "order": "04",
+      "slug": "media",
+      "title": "Rehla Media",
+      "package": "Media",
+      "dependencies": [
+        "core"
+      ],
+      "spec": "docs/superpowers/specs/media/rehla-media-design.md",
+      "plan": "docs/superpowers/plans/media/rehla-media-implementation.md"
+    },
+    {
+      "order": "05",
+      "slug": "image-cache",
+      "title": "Rehla ImageCache",
+      "package": "ImageCache",
+      "dependencies": [
+        "core",
+        "media"
+      ],
+      "spec": "docs/superpowers/specs/image-cache/rehla-image-cache-design.md",
+      "plan": "docs/superpowers/plans/image-cache/rehla-image-cache-implementation.md"
+    },
+    {
+      "order": "06",
+      "slug": "dashboard-foundation",
+      "title": "Rehla Dashboard Foundation",
+      "package": "Dashboard",
+      "dependencies": [
+        "core",
+        "datagrid",
+        "media",
+        "image-cache"
+      ],
+      "spec": "docs/superpowers/specs/dashboard-foundation/rehla-dashboard-foundation-design.md",
+      "plan": "docs/superpowers/plans/dashboard-foundation/rehla-dashboard-foundation-implementation.md"
+    },
+    {
+      "order": "07",
+      "slug": "admin-users",
+      "title": "Rehla AdminUsers",
+      "package": "AdminUsers",
+      "dependencies": [
+        "core"
+      ],
+      "spec": "docs/superpowers/specs/admin-users/rehla-admin-users-design.md",
+      "plan": "docs/superpowers/plans/admin-users/rehla-admin-users-implementation.md"
+    },
+    {
+      "order": "08",
+      "slug": "customers",
+      "title": "Rehla Customers",
+      "package": "Customers",
+      "dependencies": [
+        "core",
+        "media"
+      ],
+      "spec": "docs/superpowers/specs/customers/rehla-customers-design.md",
+      "plan": "docs/superpowers/plans/customers/rehla-customers-implementation.md"
+    },
+    {
+      "order": "09",
+      "slug": "catalog",
+      "title": "Rehla Catalog",
+      "package": "Catalog",
+      "dependencies": [
+        "core",
+        "media",
+        "image-cache"
+      ],
+      "spec": "docs/superpowers/specs/catalog/rehla-catalog-design.md",
+      "plan": "docs/superpowers/plans/catalog/rehla-catalog-implementation.md"
+    },
+    {
+      "order": "10",
+      "slug": "cart-rule",
+      "title": "Rehla CartRule",
+      "package": "CartRule",
+      "dependencies": [
+        "core",
+        "rule",
+        "catalog",
+        "customers"
+      ],
+      "spec": "docs/superpowers/specs/cart-rule/rehla-cart-rule-design.md",
+      "plan": "docs/superpowers/plans/cart-rule/rehla-cart-rule-implementation.md"
+    },
+    {
+      "order": "11",
+      "slug": "checkout",
+      "title": "Rehla Checkout",
+      "package": "Checkout",
+      "dependencies": [
+        "core",
+        "customers",
+        "catalog",
+        "cart-rule"
+      ],
+      "spec": "docs/superpowers/specs/checkout/rehla-checkout-design.md",
+      "plan": "docs/superpowers/plans/checkout/rehla-checkout-implementation.md"
+    },
+    {
+      "order": "12",
+      "slug": "sales",
+      "title": "Rehla Sales",
+      "package": "Sales",
+      "dependencies": [
+        "core",
+        "customers",
+        "catalog",
+        "checkout"
+      ],
+      "spec": "docs/superpowers/specs/sales/rehla-sales-design.md",
+      "plan": "docs/superpowers/plans/sales/rehla-sales-implementation.md"
+    },
+    {
+      "order": "13",
+      "slug": "payment",
+      "title": "Rehla Payment",
+      "package": "Payment",
+      "dependencies": [
+        "core",
+        "sales",
+        "media"
+      ],
+      "spec": "docs/superpowers/specs/payment/rehla-payment-design.md",
+      "plan": "docs/superpowers/plans/payment/rehla-payment-implementation.md"
+    },
+    {
+      "order": "14",
+      "slug": "applications",
+      "title": "Rehla Applications",
+      "package": "Applications",
+      "dependencies": [
+        "core",
+        "sales",
+        "customers",
+        "media"
+      ],
+      "spec": "docs/superpowers/specs/applications/rehla-applications-design.md",
+      "plan": "docs/superpowers/plans/applications/rehla-applications-implementation.md"
+    },
+    {
+      "order": "15",
+      "slug": "notifications",
+      "title": "Rehla Notifications",
+      "package": "Notifications",
+      "dependencies": [
+        "core",
+        "customers",
+        "sales",
+        "payment",
+        "applications"
+      ],
+      "spec": "docs/superpowers/specs/notifications/rehla-notifications-design.md",
+      "plan": "docs/superpowers/plans/notifications/rehla-notifications-implementation.md"
+    },
+    {
+      "order": "16",
+      "slug": "audit-log",
+      "title": "Rehla AuditLog",
+      "package": "AuditLog",
+      "dependencies": [
+        "core",
+        "admin-users"
+      ],
+      "spec": "docs/superpowers/specs/audit-log/rehla-audit-log-design.md",
+      "plan": "docs/superpowers/plans/audit-log/rehla-audit-log-implementation.md"
+    },
+    {
+      "order": "17",
+      "slug": "api",
+      "title": "Rehla API V1",
+      "package": "Api",
+      "dependencies": [
+        "core",
+        "customers",
+        "catalog",
+        "checkout",
+        "sales",
+        "payment",
+        "applications",
+        "media"
+      ],
+      "spec": "docs/superpowers/specs/api/rehla-api-design.md",
+      "plan": "docs/superpowers/plans/api/rehla-api-implementation.md"
+    },
+    {
+      "order": "18",
+      "slug": "dashboard-integration",
+      "title": "Rehla Dashboard Domain Integration",
+      "package": "Dashboard",
+      "dependencies": [
+        "dashboard-foundation",
+        "admin-users",
+        "customers",
+        "catalog",
+        "cart-rule",
+        "sales",
+        "payment",
+        "applications",
+        "audit-log"
+      ],
+      "spec": "docs/superpowers/specs/dashboard-integration/rehla-dashboard-integration-design.md",
+      "plan": "docs/superpowers/plans/dashboard-integration/rehla-dashboard-integration-implementation.md"
+    },
+    {
+      "order": "19",
+      "slug": "release-hardening",
+      "title": "Rehla Release Hardening",
+      "package": null,
+      "dependencies": [
+        "api",
+        "dashboard-integration",
+        "notifications",
+        "audit-log"
+      ],
+      "spec": "docs/superpowers/specs/release-hardening/rehla-release-hardening-design.md",
+      "plan": "docs/superpowers/plans/release-hardening/rehla-release-hardening-implementation.md"
+    }
+  ]
+}
