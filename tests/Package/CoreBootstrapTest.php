@@ -3,15 +3,7 @@
 use Rehla\Core\Providers\CoreServiceProvider;
 use Tests\Support\RehlaPackageTestCase;
 
-// Provide the Core package to Orchestra Testbench for isolation tests.
-trait ProvidesCorePackage
-{
-    /** @return list<class-string> */
-    protected function packageProviders(): array
-    {
-        return [CoreServiceProvider::class];
-    }
-}
+use Tests\Support\ProvidesCorePackage;
 
 final class CorePackageTestCase extends RehlaPackageTestCase
 {

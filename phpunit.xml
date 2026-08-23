@@ -31,6 +31,8 @@
         <env name="CACHE_STORE" value="array"/>
         <env name="DB_CONNECTION" value="pgsql"/>
         <env name="DB_DATABASE" value="rehla_testing"/>
+        <env name="DB_USERNAME" value="rehla"/>
+        <env name="DB_PASSWORD" value="Daking263@@"/>
         <env name="DB_URL" value=""/>
         <env name="MAIL_MAILER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
