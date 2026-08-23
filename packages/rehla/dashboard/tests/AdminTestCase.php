@@ -2,9 +2,9 @@
 
 namespace Rehla\Dashboard\Tests;
 
-use Tests\TestCase;
-use Rehla\Dashboard\Tests\Concerns\AdminTestBench;
 use Rehla\Core\Tests\Concerns\CoreAssertions;
+use Rehla\Dashboard\Tests\Concerns\AdminTestBench;
+use Tests\TestCase;
 
 class AdminTestCase extends TestCase
 {

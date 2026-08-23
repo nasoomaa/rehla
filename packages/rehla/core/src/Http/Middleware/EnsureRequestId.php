@@ -13,9 +13,9 @@ class EnsureRequestId
     {
         // Security invariant: never trust client-provided request IDs for audit identity
         $id = (string) Str::uuid();
-        
+
         $request->headers->set('X-Request-ID', $id);
-        
+
         RequestId::set($id);
 
         $response = $next($request);

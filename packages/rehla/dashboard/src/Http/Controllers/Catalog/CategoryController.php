@@ -7,13 +7,13 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
 use Illuminate\View\View;
+use Rehla\Core\Repositories\ChannelRepository;
 use Rehla\Dashboard\DataGrids\Catalog\CategoryDataGrid;
 use Rehla\Dashboard\Http\Controllers\Controller;
 use Rehla\Dashboard\Http\Requests\CategoryRequest;
 use Rehla\Dashboard\Http\Requests\MassDestroyRequest;
 use Rehla\Dashboard\Http\Requests\MassUpdateRequest;
 use Rehla\Dashboard\Http\Resources\CategoryTreeResource;
-use Rehla\Core\Repositories\ChannelRepository;
 
 class CategoryController extends Controller
 {

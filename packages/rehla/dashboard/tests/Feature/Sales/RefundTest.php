@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Mail;
-use Rehla\Dashboard\Mail\Order\RefundedNotification as AdminRefundedNotification;
 use Rehla\Core\Models\CoreConfig;
+use Rehla\Dashboard\Mail\Order\RefundedNotification as AdminRefundedNotification;
 
 use function Pest\Laravel\get;
 use function Pest\Laravel\postJson;

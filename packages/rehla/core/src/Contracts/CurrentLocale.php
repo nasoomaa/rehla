@@ -4,9 +4,6 @@ namespace Rehla\Core\Contracts;
 
 interface CurrentLocale
 {
-    /**
-     * @return string
-     */
     public function code(): string;
 
     /**

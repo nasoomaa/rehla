@@ -6,8 +6,8 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Rehla\Dashboard\Exports\ProductDataGridExport;
 use Rehla\Core\Facades\ElasticSearch;
+use Rehla\Dashboard\Exports\ProductDataGridExport;
 use Rehla\DataGrid\DataGrid;
 
 class ProductDataGrid extends DataGrid

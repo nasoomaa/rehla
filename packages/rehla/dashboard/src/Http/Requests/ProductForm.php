@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use Rehla\Dashboard\Validations\ProductCategoryUniqueSlug;
 use Rehla\Core\Helpers\MediaFileName;
 use Rehla\Core\Rules\Decimal;
 use Rehla\Core\Rules\Regex;
 use Rehla\Core\Rules\Slug;
+use Rehla\Dashboard\Validations\ProductCategoryUniqueSlug;
 
 class ProductForm extends FormRequest
 {

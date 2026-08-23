@@ -1,6 +1,5 @@
 <?php
 
-
 function makeProduct(): Product
 {
     return (new ProductFaker)->getSimpleProductFactory()->create();

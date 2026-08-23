@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Mail;
-use Rehla\Dashboard\Mail\Order\CanceledNotification as AdminOrderCanceledNotification;
 use Rehla\Core\Models\CoreConfig;
+use Rehla\Dashboard\Mail\Order\CanceledNotification as AdminOrderCanceledNotification;
 
 use function Pest\Laravel\get;
 use function Pest\Laravel\postJson;

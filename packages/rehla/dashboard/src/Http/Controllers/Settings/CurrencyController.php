@@ -4,11 +4,11 @@ namespace Rehla\Dashboard\Http\Controllers\Settings;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
-use Rehla\Dashboard\DataGrids\Settings\CurrencyDataGrid;
-use Rehla\Dashboard\Http\Controllers\Controller;
 use Rehla\Core\Enums\CurrencyPositionEnum;
 use Rehla\Core\Repositories\CurrencyRepository;
 use Rehla\Core\Rules\Code;
+use Rehla\Dashboard\DataGrids\Settings\CurrencyDataGrid;
+use Rehla\Dashboard\Http\Controllers\Controller;
 
 class CurrencyController extends Controller
 {

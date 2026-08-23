@@ -1,6 +1,5 @@
 <?php
 
-
 use function Pest\Laravel\postJson;
 
 $staleId = 999999;

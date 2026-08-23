@@ -2,13 +2,13 @@
 
 namespace Rehla\Rule;
 
+use Rehla\Rule\Conditions\ConditionGroup;
+use Rehla\Rule\Conditions\FieldCondition;
 use Rehla\Rule\Contracts\ConditionContract;
 use Rehla\Rule\Contracts\RuleContext;
 use Rehla\Rule\Contracts\RuleEvaluator as RuleEvaluatorContract;
 use Rehla\Rule\Operators\OperatorRegistry;
 use Rehla\Rule\Results\RuleResult;
-use Rehla\Rule\Conditions\FieldCondition;
-use Rehla\Rule\Conditions\ConditionGroup;
 
 class Evaluator implements RuleEvaluatorContract
 {
@@ -27,29 +27,29 @@ class Evaluator implements RuleEvaluatorContract
             $operator = $this->operatorRegistry->get($condition->getOperator());
             $actual = $context->value($condition->getField());
             $satisfied = $operator->evaluate($condition->getValue(), $actual);
-            
+
             return new RuleResult($satisfied);
         }
 
         if ($condition instanceof ConditionGroup) {
             $conditions = $condition->getConditions();
-            
+
             if (empty($conditions)) {
                 return new RuleResult($condition->isAll() ? true : false);
             }
 
             foreach ($conditions as $childCondition) {
                 $childResult = $this->evaluateResult($childCondition, $context);
-                
-                if ($condition->isAll() && !$childResult->isSatisfied()) {
+
+                if ($condition->isAll() && ! $childResult->isSatisfied()) {
                     return new RuleResult(false);
                 }
-                
-                if (!$condition->isAll() && $childResult->isSatisfied()) {
+
+                if (! $condition->isAll() && $childResult->isSatisfied()) {
                     return new RuleResult(true);
                 }
             }
-            
+
             return new RuleResult($condition->isAll() ? true : false);
         }
 

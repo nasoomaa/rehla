@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
+use Rehla\Core\Rules\PhoneNumber;
 use Rehla\Dashboard\DataGrids\Customers\CustomerDataGrid;
 use Rehla\Dashboard\DataGrids\Customers\View\InvoiceDataGrid;
 use Rehla\Dashboard\DataGrids\Customers\View\OrderDataGrid;
@@ -17,7 +18,6 @@ use Rehla\Dashboard\Http\Controllers\Controller;
 use Rehla\Dashboard\Http\Requests\MassDestroyRequest;
 use Rehla\Dashboard\Http\Requests\MassUpdateRequest;
 use Rehla\Dashboard\Mail\Customer\NewCustomerNotification;
-use Rehla\Core\Rules\PhoneNumber;
 
 class CustomerController extends Controller
 {

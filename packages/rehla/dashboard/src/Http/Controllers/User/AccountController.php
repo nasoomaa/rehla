@@ -7,8 +7,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
-use Rehla\Dashboard\Http\Controllers\Controller;
 use Rehla\Core\Helpers\MediaFileName;
+use Rehla\Dashboard\Http\Controllers\Controller;
 
 class AccountController extends Controller
 {

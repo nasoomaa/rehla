@@ -8,10 +8,10 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
+use Rehla\Core\Traits\PDFHandler;
 use Rehla\Dashboard\DataGrids\Sales\OrderInvoiceDataGrid;
 use Rehla\Dashboard\Http\Controllers\Controller;
 use Rehla\Dashboard\Http\Requests\MassUpdateRequest;
-use Rehla\Core\Traits\PDFHandler;
 
 class InvoiceController extends Controller
 {

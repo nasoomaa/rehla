@@ -1,6 +1,5 @@
 <?php
 
-
 use function Pest\Laravel\getJson;
 
 it('escapes a grid value that a closure puts inside an html attribute', function () {

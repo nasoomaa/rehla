@@ -5,11 +5,11 @@ namespace Rehla\Dashboard\Http\Controllers\Settings;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Event;
 use Illuminate\View\View;
-use Rehla\Dashboard\DataGrids\Settings\ExchangeRatesDataGrid;
-use Rehla\Dashboard\Http\Controllers\Controller;
 use Rehla\Core\Helpers\Exchange\ExchangeRate;
 use Rehla\Core\Repositories\CurrencyRepository;
 use Rehla\Core\Repositories\ExchangeRateRepository;
+use Rehla\Dashboard\DataGrids\Settings\ExchangeRatesDataGrid;
+use Rehla\Dashboard\Http\Controllers\Controller;
 
 class ExchangeRateController extends Controller
 {

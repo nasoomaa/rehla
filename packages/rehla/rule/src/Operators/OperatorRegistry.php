@@ -2,8 +2,8 @@
 
 namespace Rehla\Rule\Operators;
 
-use Rehla\Rule\Contracts\OperatorContract;
 use InvalidArgumentException;
+use Rehla\Rule\Contracts\OperatorContract;
 
 class OperatorRegistry
 {
@@ -17,7 +17,7 @@ class OperatorRegistry
 
     public function get(string $code): OperatorContract
     {
-        if (!isset($this->operators[$code])) {
+        if (! isset($this->operators[$code])) {
             throw new InvalidArgumentException("Operator [{$code}] is not registered.");
         }
 

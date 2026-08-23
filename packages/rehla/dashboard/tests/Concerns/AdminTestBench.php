@@ -2,7 +2,6 @@
 
 namespace Rehla\Dashboard\Tests\Concerns;
 
-
 trait AdminTestBench
 {
     /**

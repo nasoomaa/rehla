@@ -4,10 +4,10 @@ namespace Rehla\Dashboard\Http\Controllers\Reporting;
 
 use Illuminate\Http\JsonResponse;
 use Maatwebsite\Excel\Facades\Excel;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Rehla\Dashboard\Exports\ReportingExport;
 use Rehla\Dashboard\Helpers\Reporting as ReportingHelper;
 use Rehla\Dashboard\Http\Controllers\Controller as BaseController;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class Controller extends BaseController
 {

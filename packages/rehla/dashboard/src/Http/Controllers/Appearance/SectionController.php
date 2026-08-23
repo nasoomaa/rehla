@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
-use Rehla\Dashboard\Http\Controllers\Controller;
 use Rehla\Core\Models\Channel;
+use Rehla\Dashboard\Http\Controllers\Controller;
 
 class SectionController extends Controller
 {

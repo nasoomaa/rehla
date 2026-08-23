@@ -3,6 +3,7 @@
 namespace Rehla\Core\SystemConfig;
 
 use Rehla\Core\Contracts\SystemConfigRepository;
+use Rehla\Core\Events\SystemConfigChanged;
 
 class SystemConfigManager
 {
@@ -20,7 +21,7 @@ class SystemConfigManager
     public function set(string $key, mixed $value, ?string $localeCode = null): void
     {
         $this->repository->set($key, $value, $localeCode);
-        
-        \Rehla\Core\Events\SystemConfigChanged::dispatch($key, $localeCode);
+
+        SystemConfigChanged::dispatch($key, $localeCode);
     }
 }

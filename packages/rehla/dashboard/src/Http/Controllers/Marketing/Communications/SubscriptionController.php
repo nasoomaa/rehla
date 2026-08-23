@@ -4,9 +4,9 @@ namespace Rehla\Dashboard\Http\Controllers\Marketing\Communications;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
+use Rehla\Core\Repositories\SubscribersListRepository;
 use Rehla\Dashboard\DataGrids\Marketing\Communications\NewsLetterDataGrid;
 use Rehla\Dashboard\Http\Controllers\Controller;
-use Rehla\Core\Repositories\SubscribersListRepository;
 
 class SubscriptionController extends Controller
 {

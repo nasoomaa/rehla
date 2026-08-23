@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Mail;
+use Rehla\Core\Models\CoreConfig;
 use Rehla\Dashboard\Mail\Order\InventorySourceNotification;
 use Rehla\Dashboard\Mail\Order\ShippedNotification as AdminShippedNotification;
-use Rehla\Core\Models\CoreConfig;
 
 use function Pest\Laravel\get;
 use function Pest\Laravel\postJson;

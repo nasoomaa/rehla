@@ -1,6 +1,5 @@
 <?php
 
-
 use function Pest\Laravel\get;
 
 it('should return the index page of customers reporting', function () {

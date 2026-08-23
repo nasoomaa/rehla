@@ -1,5 +1,10 @@
 <?php
 
+use Rehla\DataGrid\Contracts\ActionAuthorizer;
+use Rehla\DataGrid\Contracts\DataGridContract;
+use Rehla\DataGrid\Contracts\ExporterContract;
+use Rehla\DataGrid\Contracts\FilterContract;
+
 test('datagrid package does not depend on downstream business packages', function () {
     expect('Rehla\DataGrid')
         ->not->toUse([
@@ -16,10 +21,10 @@ test('datagrid package contracts are properly defined', function () {
         ->toBeInterfaces();
 
     $contracts = [
-        \Rehla\DataGrid\Contracts\DataGridContract::class,
-        \Rehla\DataGrid\Contracts\FilterContract::class,
-        \Rehla\DataGrid\Contracts\ExporterContract::class,
-        \Rehla\DataGrid\Contracts\ActionAuthorizer::class,
+        DataGridContract::class,
+        FilterContract::class,
+        ExporterContract::class,
+        ActionAuthorizer::class,
     ];
 
     foreach ($contracts as $contract) {

@@ -10,7 +10,7 @@ test('rule package service provider is bound', function () {
 });
 
 test('rule package composer.json declares correct dependencies', function () {
-    $composerJson = json_decode(file_get_contents(dirname(__DIR__, 2) . '/composer.json'), true);
+    $composerJson = json_decode(file_get_contents(dirname(__DIR__, 2).'/composer.json'), true);
 
     expect($composerJson['name'])->toBe('rehla/rule')
         ->and($composerJson['require'])->toHaveKey('rehla/core');

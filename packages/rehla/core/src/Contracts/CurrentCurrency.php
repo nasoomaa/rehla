@@ -9,8 +9,5 @@ interface CurrentCurrency
      */
     public function code(): string;
 
-    /**
-     * @return int
-     */
     public function precision(): int;
 }

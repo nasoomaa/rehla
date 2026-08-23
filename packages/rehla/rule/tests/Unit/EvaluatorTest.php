@@ -2,23 +2,33 @@
 
 use Rehla\Rule\Conditions\ConditionGroup;
 use Rehla\Rule\Conditions\FieldCondition;
-use Rehla\Rule\Contracts\RuleContext;
 use Rehla\Rule\Contracts\OperatorContract;
+use Rehla\Rule\Contracts\RuleContext;
 use Rehla\Rule\Evaluator;
 use Rehla\Rule\Operators\OperatorRegistry;
 
 beforeEach(function () {
-    $this->registry = new OperatorRegistry();
-    $operator = new class implements OperatorContract {
-        public function code(): string { return 'equals'; }
-        public function evaluate(mixed $expected, mixed $actual): bool { return $expected === $actual; }
+    $this->registry = new OperatorRegistry;
+    $operator = new class implements OperatorContract
+    {
+        public function code(): string
+        {
+            return 'equals';
+        }
+
+        public function evaluate(mixed $expected, mixed $actual): bool
+        {
+            return $expected === $actual;
+        }
     };
     $this->registry->register($operator);
     $this->evaluator = new Evaluator($this->registry);
 
-    $this->context = new class implements RuleContext {
-        public function value(string $key): mixed {
-            return match($key) {
+    $this->context = new class implements RuleContext
+    {
+        public function value(string $key): mixed
+        {
+            return match ($key) {
                 'role' => 'admin',
                 'status' => 'active',
                 'age' => 30,
@@ -73,7 +83,7 @@ test('Nested condition groups work correctly', function () {
 
     $rootGroup = new ConditionGroup([
         new FieldCondition('age', 'equals', 25), // fails
-        $nestedGroup // passes
+        $nestedGroup, // passes
     ], false);
 
     expect($this->evaluator->evaluate($rootGroup, $this->context))->toBeTrue();

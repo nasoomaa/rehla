@@ -6,11 +6,11 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
 use Illuminate\View\View;
-use Rehla\Dashboard\DataGrids\Settings\ChannelDataGrid;
-use Rehla\Dashboard\Http\Controllers\Controller;
 use Rehla\Core\Helpers\MediaFileName;
 use Rehla\Core\Repositories\ChannelRepository;
 use Rehla\Core\Rules\Code;
+use Rehla\Dashboard\DataGrids\Settings\ChannelDataGrid;
+use Rehla\Dashboard\Http\Controllers\Controller;
 
 class ChannelController extends Controller
 {

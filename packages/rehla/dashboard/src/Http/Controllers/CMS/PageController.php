@@ -6,10 +6,10 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
 use Illuminate\View\View;
+use Rehla\Core\Rules\Slug;
 use Rehla\Dashboard\DataGrids\CMS\CMSPageDataGrid;
 use Rehla\Dashboard\Http\Controllers\Controller;
 use Rehla\Dashboard\Http\Requests\MassDestroyRequest;
-use Rehla\Core\Rules\Slug;
 
 class PageController extends Controller
 {

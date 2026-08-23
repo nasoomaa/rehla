@@ -5,9 +5,7 @@ namespace Rehla\Core\Contracts;
 interface MenuRegistry
 {
     /**
-     * @param string $key
-     * @param array<string, mixed> $options
-     * @return void
+     * @param  array<string, mixed>  $options
      */
     public function register(string $key, array $options): void;
 

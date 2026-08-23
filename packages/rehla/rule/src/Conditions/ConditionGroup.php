@@ -8,8 +8,7 @@ use Rehla\Rule\Contracts\RuleContext;
 class ConditionGroup implements ConditionContract
 {
     /**
-     * @param ConditionContract[] $conditions
-     * @param bool $all
+     * @param  ConditionContract[]  $conditions
      */
     public function __construct(
         private array $conditions = [],

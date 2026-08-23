@@ -1,11 +1,9 @@
 <?php
 
 use Rehla\Core\Providers\CoreServiceProvider;
-use Tests\Support\RehlaPackageTestCase;
+use Tests\Support\CorePackageTestCase;
 
-use Tests\Support\ProvidesCorePackage;
-
-uses(\Tests\Support\CorePackageTestCase::class);
+uses(CorePackageTestCase::class);
 
 test('core package boots with safe PostgreSQL testing configuration', function () {
     expect($this->app['config']->get('app.env'))->toBe('testing')
@@ -21,7 +19,7 @@ test('core service provider is loaded in the application', function () {
 
 test('core package composer.json declares no first-party rehla business dependencies', function () {
     $manifest = json_decode(
-        file_get_contents(dirname(__DIR__, 3) . '/packages/rehla/core/composer.json'),
+        file_get_contents(dirname(__DIR__, 3).'/packages/rehla/core/composer.json'),
         true,
         512,
         JSON_THROW_ON_ERROR

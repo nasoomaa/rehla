@@ -1,6 +1,5 @@
 <?php
 
-
 use function Pest\Laravel\get;
 use function Pest\Laravel\postJson;
 

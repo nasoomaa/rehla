@@ -5,9 +5,9 @@ namespace Rehla\Dashboard\Http\Controllers\Customers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Event;
 use Illuminate\View\View;
+use Rehla\Core\Rules\Code;
 use Rehla\Dashboard\DataGrids\Customers\GroupDataGrid;
 use Rehla\Dashboard\Http\Controllers\Controller;
-use Rehla\Core\Rules\Code;
 
 class CustomerGroupController extends Controller
 {

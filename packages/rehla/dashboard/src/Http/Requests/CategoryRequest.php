@@ -3,9 +3,9 @@
 namespace Rehla\Dashboard\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Rehla\Dashboard\Validations\ProductCategoryUniqueSlug;
 use Rehla\Core\Helpers\MediaFileName;
 use Rehla\Core\Rules\Slug;
+use Rehla\Dashboard\Validations\ProductCategoryUniqueSlug;
 
 class CategoryRequest extends FormRequest
 {

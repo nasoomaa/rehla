@@ -30,7 +30,7 @@ class FieldCondition implements ConditionContract
 
     public function evaluate(RuleContext $context): bool
     {
-        // Field condition evaluation depends on the operator, 
+        // Field condition evaluation depends on the operator,
         // which the Evaluator handles using the OperatorRegistry.
         // The ConditionContract doesn't strictly have to have evaluate() handle registry logic,
         // but since the spec states Evaluator evaluates, we might delegate.

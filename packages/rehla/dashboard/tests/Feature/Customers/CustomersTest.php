@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Rehla\Dashboard\Mail\Customer\NewCustomerNotification;
 use Rehla\Core\Models\CoreConfig;
+use Rehla\Dashboard\Mail\Customer\NewCustomerNotification;
 
 use function Pest\Laravel\get;
 use function Pest\Laravel\getJson;

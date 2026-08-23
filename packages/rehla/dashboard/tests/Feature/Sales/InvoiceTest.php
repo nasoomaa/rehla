@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Mail;
-use Rehla\Dashboard\Mail\Order\InvoicedNotification as AdminInvoicedNotification;
 use Rehla\Core\Models\CoreConfig;
+use Rehla\Dashboard\Mail\Order\InvoicedNotification as AdminInvoicedNotification;
 
 use function Pest\Laravel\get;
 use function Pest\Laravel\postJson;

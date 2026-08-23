@@ -1,13 +1,14 @@
 <?php
 
+use Illuminate\Database\QueryException;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Schema;
 use Rehla\Core\Models\CoreConfig;
 use Rehla\Core\Models\Currency;
 use Rehla\Core\Models\Locale;
-use Tests\Support\ProvidesCorePackage;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Support\CorePackageTestCase;
 
-uses(\Tests\Support\CorePackageTestCase::class, \Illuminate\Foundation\Testing\RefreshDatabase::class);
+uses(CorePackageTestCase::class, RefreshDatabase::class);
 
 test('locales table exists with correct schema', function () {
     expect(Schema::hasTable('locales'))->toBeTrue()
@@ -22,7 +23,7 @@ test('currencies table exists with correct schema', function () {
 test('core_config table exists with correct schema and unique constraints', function () {
     expect(Schema::hasTable('core_config'))->toBeTrue()
         ->and(Schema::hasColumns('core_config', ['id', 'key', 'value', 'locale_code', 'is_secret', 'created_at', 'updated_at']))->toBeTrue();
-    
+
     // Test the UNIQUE(key, locale_code) constraint by trying to insert duplicates
     // But since this is a schema test, we can just check if the model works.
 });
@@ -56,9 +57,9 @@ test('core_config model hides secret values on array serialization', function ()
         'locale_code' => 'en',
         'is_secret' => true,
     ]);
-    
+
     $array = $config->toArray();
-    
+
     expect($array)->not->toHaveKey('value');
 });
 
@@ -75,5 +76,5 @@ test('core_config model enforces unique key-locale pairs', function () {
         'value' => 'Rehla Duplicate',
         'locale_code' => 'en',
         'is_secret' => false,
-    ]))->toThrow(\Illuminate\Database\QueryException::class);
+    ]))->toThrow(QueryException::class);
 });

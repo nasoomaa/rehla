@@ -19,8 +19,8 @@ class GridQueryProcessor
 
         // 2. Reject unregistered filters
         if (isset($parameters['filters']) && is_array($parameters['filters'])) {
-            $registeredFilters = array_map(fn($f) => clone $f, $grid->filters()); // just to ensure types, but actually we need to get their IDs
-            
+            $registeredFilters = array_map(fn ($f) => clone $f, $grid->filters()); // just to ensure types, but actually we need to get their IDs
+
             // let's build a map of allowed filter IDs
             $allowedFilterIds = [];
             foreach ($grid->filters() as $filter) {
@@ -32,7 +32,7 @@ class GridQueryProcessor
             }
 
             foreach (array_keys($parameters['filters']) as $filterId) {
-                if (!in_array($filterId, $allowedFilterIds, true)) {
+                if (! in_array($filterId, $allowedFilterIds, true)) {
                     throw new \InvalidArgumentException("Unregistered filter: {$filterId}");
                 }
             }
@@ -41,7 +41,7 @@ class GridQueryProcessor
         // 3. Reject unregistered sorts
         if (isset($parameters['sort'])) {
             $sortField = $parameters['sort'];
-            
+
             $allowedColumnIds = [];
             foreach ($grid->columns() as $column) {
                 if (method_exists($column, 'id')) {
@@ -49,7 +49,7 @@ class GridQueryProcessor
                 }
             }
 
-            if (!in_array($sortField, $allowedColumnIds, true)) {
+            if (! in_array($sortField, $allowedColumnIds, true)) {
                 throw new \InvalidArgumentException("Unregistered sort column: {$sortField}");
             }
         }

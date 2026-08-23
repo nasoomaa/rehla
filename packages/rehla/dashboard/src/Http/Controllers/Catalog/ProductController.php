@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Rehla\Core\Rules\Slug;
 use Rehla\Dashboard\DataGrids\Catalog\ProductDataGrid;
 use Rehla\Dashboard\Http\Controllers\Controller;
 use Rehla\Dashboard\Http\Requests\InventoryRequest;
@@ -15,7 +16,6 @@ use Rehla\Dashboard\Http\Requests\MassUpdateRequest;
 use Rehla\Dashboard\Http\Requests\ProductForm;
 use Rehla\Dashboard\Http\Resources\AttributeResource;
 use Rehla\Dashboard\Http\Resources\ProductResource;
-use Rehla\Core\Rules\Slug;
 
 class ProductController extends Controller
 {

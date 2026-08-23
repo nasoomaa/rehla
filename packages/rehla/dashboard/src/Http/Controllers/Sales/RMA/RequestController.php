@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
-use Symfony\Component\Mime\MimeTypes;
 use Rehla\Dashboard\DataGrids\Sales\RMA\OrderRMADataGrid;
 use Rehla\Dashboard\DataGrids\Sales\RMA\RMADataGrid;
 use Rehla\Dashboard\Http\Controllers\Controller;
+use Symfony\Component\Mime\MimeTypes;
 
 class RequestController extends Controller
 {

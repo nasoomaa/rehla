@@ -7,7 +7,7 @@ interface ExporterContract
     /**
      * Export the query results.
      *
-     * @param mixed $query
+     * @param  mixed  $query
      */
     public function export($query): void;
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 use function Pest\Laravel\deleteJson;
 use function Pest\Laravel\postJson;
 use function Pest\Laravel\putJson;

@@ -1,11 +1,8 @@
 <?php
 
-use Tests\Fixtures\Foundation\FixturePackageServiceProvider;
-use Tests\Support\RehlaPackageTestCase;
+use Tests\Support\FoundationFixturePackageTestCase;
 
-
-
-uses(\Tests\Support\FoundationFixturePackageTestCase::class);
+uses(FoundationFixturePackageTestCase::class);
 
 test('boots supplied package providers with the safe PostgreSQL testing configuration', function () {
     expect($this->app['foundation.fixture'])->toBe('booted')

@@ -1,6 +1,5 @@
 <?php
 
-
 use function Pest\Laravel\postJson;
 
 it('should describe every section type', function () {

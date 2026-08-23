@@ -6,9 +6,9 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Event;
 use Illuminate\View\View;
 use Prettus\Repository\Events\RepositoryEntityUpdated;
-use Rehla\Dashboard\Http\Controllers\Controller;
 use Rehla\Core\Contracts\Channel;
 use Rehla\Core\Repositories\ChannelRepository;
+use Rehla\Dashboard\Http\Controllers\Controller;
 
 class ThemeController extends Controller
 {

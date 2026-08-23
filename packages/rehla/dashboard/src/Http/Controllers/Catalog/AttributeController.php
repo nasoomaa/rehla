@@ -6,12 +6,12 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
 use Illuminate\View\View;
-use Rehla\Dashboard\DataGrids\Catalog\AttributeDataGrid;
-use Rehla\Dashboard\Http\Controllers\Controller;
-use Rehla\Dashboard\Http\Requests\MassDestroyRequest;
 use Rehla\Core\Helpers\MediaFileName;
 use Rehla\Core\Rules\Code;
 use Rehla\Core\Rules\Regex;
+use Rehla\Dashboard\DataGrids\Catalog\AttributeDataGrid;
+use Rehla\Dashboard\Http\Controllers\Controller;
+use Rehla\Dashboard\Http\Requests\MassDestroyRequest;
 
 class AttributeController extends Controller
 {
