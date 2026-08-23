@@ -32,9 +32,25 @@ class Evaluator implements RuleEvaluatorContract
         }
 
         if ($condition instanceof ConditionGroup) {
-            $satisfied = $condition->isAll() ? true : false;
-            // Basic stub for Task 3 vertical slice, fully implemented in Task 5.
-            return new RuleResult($satisfied);
+            $conditions = $condition->getConditions();
+            
+            if (empty($conditions)) {
+                return new RuleResult($condition->isAll() ? true : false);
+            }
+
+            foreach ($conditions as $childCondition) {
+                $childResult = $this->evaluateResult($childCondition, $context);
+                
+                if ($condition->isAll() && !$childResult->isSatisfied()) {
+                    return new RuleResult(false);
+                }
+                
+                if (!$condition->isAll() && $childResult->isSatisfied()) {
+                    return new RuleResult(true);
+                }
+            }
+            
+            return new RuleResult($condition->isAll() ? true : false);
         }
 
         return new RuleResult(false);
