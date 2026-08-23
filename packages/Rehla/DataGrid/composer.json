@@ -1,0 +1,22 @@
+{
+    "name": "rehla/datagrid",
+    "description": "Rehla DataGrid Engine",
+    "type": "library",
+    "require": {
+        "php": "^8.3",
+        "laravel/framework": "^13.0",
+        "rehla/core": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rehla\\DataGrid\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rehla\\DataGrid\\Providers\\DataGridServiceProvider"
+            ]
+        }
+    }
+}
