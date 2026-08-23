@@ -11,7 +11,8 @@ class EnsureRequestId
 {
     public function handle(Request $request, Closure $next)
     {
-        $id = $request->header('X-Request-ID', (string) Str::uuid());
+        // Security invariant: never trust client-provided request IDs for audit identity
+        $id = (string) Str::uuid();
         
         $request->headers->set('X-Request-ID', $id);
         
