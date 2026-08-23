@@ -1,0 +1,90 @@
+<?php
+
+namespace Rehla\Dashboard\DataGrids\Customers;
+
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\DB;
+use Rehla\DataGrid\DataGrid;
+
+class GroupDataGrid extends DataGrid
+{
+    /**
+     * Prepare query builder.
+     *
+     * @return Builder
+     */
+    public function prepareQueryBuilder()
+    {
+        return DB::table('customer_groups')
+            ->select(
+                'id',
+                'code',
+                'name'
+            );
+    }
+
+    /**
+     * Prepare columns.
+     *
+     * @return void
+     */
+    public function prepareColumns()
+    {
+        $this->addColumn([
+            'index' => 'id',
+            'label' => trans('dashboard::app.customers.groups.index.datagrid.id'),
+            'type' => 'integer',
+            'filterable' => true,
+            'sortable' => true,
+        ]);
+
+        $this->addColumn([
+            'index' => 'code',
+            'label' => trans('dashboard::app.customers.groups.index.datagrid.code'),
+            'type' => 'string',
+            'filterable' => true,
+            'sortable' => true,
+        ]);
+
+        $this->addColumn([
+            'index' => 'name',
+            'label' => trans('dashboard::app.customers.groups.index.datagrid.name'),
+            'type' => 'string',
+            'searchable' => true,
+            'filterable' => true,
+            'sortable' => true,
+        ]);
+    }
+
+    /**
+     * Prepare mass actions.
+     *
+     * @return void
+     */
+    public function prepareActions()
+    {
+        if (bouncer()->hasPermission('customers.groups.edit')) {
+            $this->addAction([
+                'index' => 'edit',
+                'icon' => 'icon-edit',
+                'title' => trans('dashboard::app.customers.groups.index.datagrid.edit'),
+                'method' => 'PUT',
+                'url' => function ($row) {
+                    return '';
+                },
+            ]);
+        }
+
+        if (bouncer()->hasPermission('customers.groups.delete')) {
+            $this->addAction([
+                'index' => 'delete',
+                'icon' => 'icon-delete',
+                'title' => trans('dashboard::app.customers.groups.index.datagrid.delete'),
+                'method' => 'DELETE',
+                'url' => function ($row) {
+                    return route('admin.customers.groups.delete', $row->id);
+                },
+            ]);
+        }
+    }
+}

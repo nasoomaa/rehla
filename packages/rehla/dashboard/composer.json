@@ -1,38 +1,21 @@
 {
     "name": "rehla/dashboard",
-    "description": "Rehla Dashboard: Admin presentation layer \u2014 routes, controllers, views, DataGrids",
-    "type": "library",
-    "require": {
-        "php": "^8.5",
-        "laravel/framework": "^13.0",
-        "rehla/core": "*",
-        "rehla/datagrid": "*",
-        "rehla/catalog": "*",
-        "rehla/customers": "*",
-        "rehla/admin-users": "*",
-        "rehla/cart-rule": "*",
-        "rehla/sales": "*",
-        "rehla/payment": "*",
-        "rehla/checkout": "*",
-        "rehla/applications": "*",
-        "rehla/media": "*",
-        "rehla/image-cache": "*",
-        "rehla/audit-log": "*"
-    },
-    "require-dev": {
-        "pestphp/pest": "^4.0",
-        "orchestra/testbench": "^11.0"
-    },
+    "license": "proprietary",
+    "description" : "Rehla Dashboard package",
+    "require": {},
     "autoload": {
         "psr-4": {
             "Rehla\\Dashboard\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Rehla\\Dashboard\\Tests\\": "tests/"
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rehla\\Dashboard\\Providers\\DashboardServiceProvider"
+            ],
+            "aliases": {}
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

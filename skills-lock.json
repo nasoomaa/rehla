@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "skills": {
+    "bagisto-admin-theme-development": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-admin-theme-development/SKILL.md",
+      "computedHash": "4cd22efff9a91d96ace7239982ded98f11f039fa0798569d68b4d750e0374f9f"
+    },
+    "bagisto-api-admin": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/api-platform-development/bagisto-api-admin/SKILL.md",
+      "computedHash": "d4e9e9af0f3a2000d57ffd6fda0a67e6af8829ec1519251c96d2e2f1fce71b58"
+    },
+    "bagisto-api-develop": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/api-platform-development/bagisto-api-develop/SKILL.md",
+      "computedHash": "ce23bd0931f44fe28163ac470878a62ea1a9e40740e4bc39255cb66d0ae8f4c4"
+    },
+    "bagisto-api-shop": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/api-platform-development/bagisto-api-shop/SKILL.md",
+      "computedHash": "82072a89411beadbfe11d98db62a447d5967ea51ac54bd17163028942438ccda"
+    },
+    "bagisto-attribute-development": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-attribute-development/SKILL.md",
+      "computedHash": "620a5a9d1bb13f1ad64fb063ce8934350bd940ac4507d63d92b78e61fd55bdc2"
+    },
+    "bagisto-change-verification": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-change-verification/SKILL.md",
+      "computedHash": "233e847da79d37a39451bb20edb5e83d0e2faccec316ef72b7e653d936ceb3fb"
+    },
+    "bagisto-code-review": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-code-review/SKILL.md",
+      "computedHash": "b17a11d71ac3b4012c5cae2ccbf78b8ad72bfdddbcddb0689af2e05d56c0daf2"
+    },
+    "bagisto-coding-standards": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-coding-standards/SKILL.md",
+      "computedHash": "4100c6ea2f26244f6b12606d2a11aae75f917dd315e08c5f0d57384b62ed7f7f"
+    },
+    "bagisto-data-transfer": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-data-transfer/SKILL.md",
+      "computedHash": "8dab15994c7e2f1d8ebcf0f85c95f86d24ad0811b02ae0d7b9a18b2b31538c24"
+    },
+    "bagisto-datagrid-development": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-datagrid-development/SKILL.md",
+      "computedHash": "9d183ef093b131daf7ec6bf5573e6703f6f24225db5cfa464fc8e4c4e33f9e72"
+    },
+    "bagisto-documentation": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-documentation/SKILL.md",
+      "computedHash": "781849cef813d9cf081757bdfc9aaf1d32cb16d8d4e7fa88043282e80886d1a9"
+    },
+    "bagisto-git-workflow": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-git-workflow/SKILL.md",
+      "computedHash": "ec59dc6053dafbe92e46718f89436c199b6c6c9ea59367c87190cc3f293e21fa"
+    },
+    "bagisto-package-development": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-package-development/SKILL.md",
+      "computedHash": "06e8e2cf6a5a7d3637df20190eb4b07eb671cb90e1bdc6b7f67cc62adc23a17e"
+    },
+    "bagisto-payment-method-development": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-payment-method-development/SKILL.md",
+      "computedHash": "81138a94378c66d5537ae0a43e53d3d7dffb6a6fad581dd39c962560d804f1c9"
+    },
+    "bagisto-pest-testing": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-pest-testing/SKILL.md",
+      "computedHash": "b9cdb0c51c36c4b0384eeceadb6df08fa2b49991fba2f262745d80e455938708"
+    },
+    "bagisto-playwright-testing": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-playwright-testing/SKILL.md",
+      "computedHash": "04835d38399a6eb608b8ea0e3cc75d70ba8c7c2f478f5ab98549555937253737"
+    },
+    "bagisto-product-type-development": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-product-type-development/SKILL.md",
+      "computedHash": "6097a0621369780f99ece54feac470279351ec850fbab0d4a5cae4a23c185c3f"
+    },
+    "bagisto-shipping-method-development": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-shipping-method-development/SKILL.md",
+      "computedHash": "908f7c9794a5f8adf7d6b2707798a8d5a24a75f1d6ee2280139142048e529f33"
+    },
+    "bagisto-shop-advance-theme-development": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-shop-advance-theme-development/SKILL.md",
+      "computedHash": "98da0c9ebaf6935df1f5c5a2bf624d03ea8abf0d678b3089d8fd4c36e16af70d"
+    },
+    "bagisto-shop-theme-development": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-shop-theme-development/SKILL.md",
+      "computedHash": "e1bd28ddc0add5e8fc6b5e678049e67045b24e254ce24b4be0860184319b05db"
+    },
+    "bagisto-theme-sections": {
+      "source": "bagisto/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/bagisto-theme-sections/SKILL.md",
+      "computedHash": "73a4c3063c56a9baf9c2fdc9c57d5da6fbf886b00ed3b010e8e3d93b29add847"
+    }
+  }
+}
