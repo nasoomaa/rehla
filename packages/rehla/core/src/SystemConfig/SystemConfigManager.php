@@ -21,6 +21,6 @@ class SystemConfigManager
     {
         $this->repository->set($key, $value, $localeCode);
         
-        // TODO: dispatch SystemConfigChanged — wired in Task 6
+        \Rehla\Core\Events\SystemConfigChanged::dispatch($key, $localeCode);
     }
 }
