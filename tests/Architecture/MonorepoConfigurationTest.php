@@ -1,5 +1,23 @@
 <?php
 
+use App\Providers\AppServiceProvider;
+use Rehla\AdminUsers\Providers\AdminUsersServiceProvider;
+use Rehla\Api\Providers\ApiServiceProvider;
+use Rehla\Applications\Providers\ApplicationsServiceProvider;
+use Rehla\AuditLog\Providers\AuditLogServiceProvider;
+use Rehla\CartRule\Providers\CartRuleServiceProvider;
+use Rehla\Catalog\Providers\CatalogServiceProvider;
+use Rehla\Checkout\Providers\CheckoutServiceProvider;
+use Rehla\Core\Providers\CoreServiceProvider;
+use Rehla\Customers\Providers\CustomersServiceProvider;
+use Rehla\Dashboard\Providers\DashboardServiceProvider;
+use Rehla\Datagrid\Providers\DatagridServiceProvider;
+use Rehla\ImageCache\Providers\ImageCacheServiceProvider;
+use Rehla\Media\Providers\MediaServiceProvider;
+use Rehla\Notifications\Providers\NotificationsServiceProvider;
+use Rehla\Payment\Providers\PaymentServiceProvider;
+use Rehla\Rule\Providers\RuleServiceProvider;
+use Rehla\Sales\Providers\SalesServiceProvider;
 use Tests\Support\Architecture\MonorepoConfiguration;
 
 test('rejects missing or duplicated paths, unbound constraints, and provider reordering', function () {
@@ -20,7 +38,6 @@ test('rejects missing or duplicated paths, unbound constraints, and provider reo
         ->toContain('provider registration order does not match section 35');
 });
 
-
 test('rejects coupled Composer repository and provider reordering', function () {
     $composer = validMonorepoComposer();
     [$composer['repositories'][0], $composer['repositories'][7]] = [$composer['repositories'][7], $composer['repositories'][0]];
@@ -40,6 +57,12 @@ test('the root Composer configuration and provider registry are deterministic', 
     expect((new MonorepoConfiguration)->violations($composer, $providers))->toBe([]);
 });
 
+/**
+ * @return array{
+ *     require: array<string, 'dev-main'>,
+ *     repositories: list<array{type: 'path', url: string}>
+ * }
+ */
 function validMonorepoComposer(): array
 {
     $packages = [
@@ -74,26 +97,29 @@ function validMonorepoComposer(): array
     ];
 }
 
+/**
+ * @return list<class-string>
+ */
 function approvedProviders(): array
 {
     return [
-        App\Providers\AppServiceProvider::class,
-        Rehla\Core\Providers\CoreServiceProvider::class,
-        Rehla\Datagrid\Providers\DatagridServiceProvider::class,
-        Rehla\Rule\Providers\RuleServiceProvider::class,
-        Rehla\Media\Providers\MediaServiceProvider::class,
-        Rehla\ImageCache\Providers\ImageCacheServiceProvider::class,
-        Rehla\Customers\Providers\CustomersServiceProvider::class,
-        Rehla\AdminUsers\Providers\AdminUsersServiceProvider::class,
-        Rehla\Catalog\Providers\CatalogServiceProvider::class,
-        Rehla\CartRule\Providers\CartRuleServiceProvider::class,
-        Rehla\Sales\Providers\SalesServiceProvider::class,
-        Rehla\Payment\Providers\PaymentServiceProvider::class,
-        Rehla\Checkout\Providers\CheckoutServiceProvider::class,
-        Rehla\Applications\Providers\ApplicationsServiceProvider::class,
-        Rehla\Notifications\Providers\NotificationsServiceProvider::class,
-        Rehla\AuditLog\Providers\AuditLogServiceProvider::class,
-        Rehla\Dashboard\Providers\DashboardServiceProvider::class,
-        Rehla\Api\Providers\ApiServiceProvider::class,
+        AppServiceProvider::class,
+        CoreServiceProvider::class,
+        DatagridServiceProvider::class,
+        RuleServiceProvider::class,
+        MediaServiceProvider::class,
+        ImageCacheServiceProvider::class,
+        CustomersServiceProvider::class,
+        AdminUsersServiceProvider::class,
+        CatalogServiceProvider::class,
+        CartRuleServiceProvider::class,
+        SalesServiceProvider::class,
+        PaymentServiceProvider::class,
+        CheckoutServiceProvider::class,
+        ApplicationsServiceProvider::class,
+        NotificationsServiceProvider::class,
+        AuditLogServiceProvider::class,
+        DashboardServiceProvider::class,
+        ApiServiceProvider::class,
     ];
 }

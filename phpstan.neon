@@ -1,0 +1,16 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/mrpunyapal/peststan/extension.neon
+
+parameters:
+    level: 6
+    paths:
+        - app
+        - bootstrap
+        - config
+        - packages/rehla
+        - routes
+        - tests
+    excludePaths:
+        analyse:
+            - bootstrap/cache/*.php

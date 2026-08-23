@@ -29,7 +29,6 @@ test('rejects unsafe test database configurations', function (string $environmen
 ]);
 
 test('accepts a PostgreSQL database name ending in testing', function () {
-    TestDatabaseGuard::assertSafe('testing', 'pgsql', 'rehla_testing');
-
-    expect(true)->toBeTrue();
+    expect(fn () => TestDatabaseGuard::assertSafe('testing', 'pgsql', 'rehla_testing'))
+        ->not->toThrow(Throwable::class);
 });

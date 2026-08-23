@@ -4,6 +4,10 @@ namespace Tests\Support\Architecture;
 
 final class PackageDependencyGraph
 {
+    /**
+     * @param  array<string, list<string>>  $expected
+     * @return list<string>
+     */
     public function violations(string $packagesRoot, array $expected): array
     {
         $packages = [];
@@ -46,6 +50,9 @@ final class PackageDependencyGraph
         return $violations;
     }
 
+    /**
+     * @return list<array{name: string, require?: array<string, mixed>}>
+     */
     private function manifests(string $packagesRoot): array
     {
         $manifests = [];
@@ -59,6 +66,10 @@ final class PackageDependencyGraph
         return $manifests;
     }
 
+    /**
+     * @param  array{name: string, require?: array<string, mixed>}  $manifest
+     * @return list<string>
+     */
     private function firstPartyDependencies(array $manifest): array
     {
         return array_values(array_filter(
@@ -67,6 +78,10 @@ final class PackageDependencyGraph
         ));
     }
 
+    /**
+     * @param  array<string, list<string>>  $packages
+     * @return list<string>
+     */
     private function cycles(array $packages): array
     {
         $visiting = [];

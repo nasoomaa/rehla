@@ -44,6 +44,9 @@ test('the first-party package manifests match the approved dependency graph', fu
     expect((new PackageDependencyGraph)->violations(dirname(__DIR__, 2).'/packages/rehla', $expected))->toBe([]);
 });
 
+/**
+ * @param  array<string, string>  $require
+ */
 function writePackageManifest(string $directory, string $name, array $require): void
 {
     mkdir($directory, 0777, true);

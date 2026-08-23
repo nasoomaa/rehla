@@ -11,6 +11,9 @@ abstract class RehlaPackageTestCase extends OrchestraTestCase
         return $this->packageProviders();
     }
 
+    /**
+     * @return list<class-string>
+     */
     abstract protected function packageProviders(): array;
 
     protected function defineEnvironment($app): void
