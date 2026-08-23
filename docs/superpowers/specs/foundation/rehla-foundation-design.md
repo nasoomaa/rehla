@@ -3,6 +3,7 @@
 > **Parent architecture:** `docs/superpowers/specs/2026-08-22-rehla-platform-design.md`  
 > **Execution unit:** `00 / 19`  
 > **Status:** Approved decomposition of the Rehla master architecture. This document narrows scope; it does not override the parent spec.
+> **Path convention amendment (approved 2026-08-23):** Filesystem package paths use lowercase `packages/rehla/*`; PHP namespaces remain PascalCase.
 
 
 ## 1. Goal
@@ -36,7 +37,7 @@ The implementation MUST NOT pull responsibilities from a later package merely to
 
 ## 3. Public Interfaces
 
-- Root Composer path repositories for packages/Rehla/*
+- Root Composer path repositories for packages/rehla/*
 - deterministic first-party provider registration contract
 - shared test bootstrap conventions
 - architecture dependency manifest convention

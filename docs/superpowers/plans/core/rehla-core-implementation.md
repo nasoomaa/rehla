@@ -11,6 +11,8 @@
 **Spec:** `docs/superpowers/specs/core/rehla-core-design.md`  
 **Parent Spec:** `docs/superpowers/specs/2026-08-22-rehla-platform-design.md`
 
+> **Path convention amendment (approved 2026-08-23):** Filesystem package paths use lowercase `packages/rehla/*`; PHP namespaces remain PascalCase.
+
 ## Global Constraints
 
 - PHP runtime target is exactly the active PHP 8.5.4 environment; do not downgrade it.
@@ -39,32 +41,34 @@
 
 ## File/Responsibility Map
 
-- `packages/Rehla/Core/composer.json` — package metadata/dependencies/autoload
-- `packages/Rehla/Core/src/Providers/CoreServiceProvider.php` — deterministic package bootstrap
-- `packages/Rehla/Core/tests/` — package-level behavior/security/boundary tests
+- `packages/rehla/core/composer.json` — package metadata/dependencies/autoload
+- `packages/rehla/core/src/Providers/CoreServiceProvider.php` — deterministic package bootstrap
+- `packages/rehla/core/tests/` — package-level behavior/security/boundary tests
+
+The Foundation baseline already created the Core package manifest and service provider at these paths. Task 1 extends those files and must not create a second package tree.
 
 ## Concrete V1 File Blueprint
 
 The implementation plan uses the following exact V1 target files. Adding another production file requires an explicit responsibility not already represented here; removing one requires a spec amendment.
 
-- `packages/Rehla/Core/src/Contracts/MenuRegistry.php`
-- `packages/Rehla/Core/src/Contracts/AclRegistry.php`
-- `packages/Rehla/Core/src/Contracts/SystemConfigRepository.php`
-- `packages/Rehla/Core/src/Contracts/CurrentLocale.php`
-- `packages/Rehla/Core/src/Contracts/CurrentCurrency.php`
-- `packages/Rehla/Core/src/Database/Migrations/2026_08_22_010001_create_core_config_table.php`
-- `packages/Rehla/Core/src/Database/Migrations/2026_08_22_010002_create_locales_table.php`
-- `packages/Rehla/Core/src/Database/Migrations/2026_08_22_010003_create_currencies_table.php`
-- `packages/Rehla/Core/src/Models/CoreConfig.php`
-- `packages/Rehla/Core/src/Models/Locale.php`
-- `packages/Rehla/Core/src/Models/Currency.php`
-- `packages/Rehla/Core/src/Menu/MenuManager.php`
-- `packages/Rehla/Core/src/Acl/AclManager.php`
-- `packages/Rehla/Core/src/SystemConfig/SystemConfigManager.php`
-- `packages/Rehla/Core/src/SystemConfig/DatabaseSystemConfigRepository.php`
-- `packages/Rehla/Core/src/Support/RequestId.php`
-- `packages/Rehla/Core/src/Http/Middleware/EnsureRequestId.php`
-- `packages/Rehla/Core/src/Events/SystemConfigChanged.php`
+- `packages/rehla/core/src/Contracts/MenuRegistry.php`
+- `packages/rehla/core/src/Contracts/AclRegistry.php`
+- `packages/rehla/core/src/Contracts/SystemConfigRepository.php`
+- `packages/rehla/core/src/Contracts/CurrentLocale.php`
+- `packages/rehla/core/src/Contracts/CurrentCurrency.php`
+- `packages/rehla/core/src/Database/Migrations/2026_08_22_010001_create_core_config_table.php`
+- `packages/rehla/core/src/Database/Migrations/2026_08_22_010002_create_locales_table.php`
+- `packages/rehla/core/src/Database/Migrations/2026_08_22_010003_create_currencies_table.php`
+- `packages/rehla/core/src/Models/CoreConfig.php`
+- `packages/rehla/core/src/Models/Locale.php`
+- `packages/rehla/core/src/Models/Currency.php`
+- `packages/rehla/core/src/Menu/MenuManager.php`
+- `packages/rehla/core/src/Acl/AclManager.php`
+- `packages/rehla/core/src/SystemConfig/SystemConfigManager.php`
+- `packages/rehla/core/src/SystemConfig/DatabaseSystemConfigRepository.php`
+- `packages/rehla/core/src/Support/RequestId.php`
+- `packages/rehla/core/src/Http/Middleware/EnsureRequestId.php`
+- `packages/rehla/core/src/Events/SystemConfigChanged.php`
 
 ## Task Sequence
 
@@ -72,9 +76,9 @@ The implementation plan uses the following exact V1 target files. Adding another
 ### Task 1: Bootstrap Rehla Core package boundary
 
 **Files:**
-- Create: `packages/Rehla/Core/composer.json`
-- Create: `packages/Rehla/Core/src/Providers/CoreServiceProvider.php`
-- Create: `packages/Rehla/Core/tests/Feature/PackageBootTest.php`
+- Modify: `packages/rehla/core/composer.json`
+- Modify: `packages/rehla/core/src/Providers/CoreServiceProvider.php`
+- Create: `packages/rehla/core/tests/Feature/PackageBootTest.php`
 
 **Interfaces:**
 - Consumes: approved direct dependency contracts from `foundation`
@@ -89,7 +93,7 @@ The implementation plan uses the following exact V1 target files. Adding another
   For behavior-bearing PHP work, create the smallest Pest test that fails because the required production behavior is absent. For configuration/generated metadata, use the first executable validation command as the red gate.
 
 - [ ] **Step 2: Run the focused RED/gate command**
-  - Run: `./vendor/bin/pest packages/Rehla/Core/tests/Feature/PackageBootTest.php`
+  - Run: `./vendor/bin/pest packages/rehla/core/tests/Feature/PackageBootTest.php`
 
   Expected before implementation: the new behavior test fails for the intended missing behavior, or the validation gate identifies the not-yet-configured requirement.
 
@@ -98,7 +102,7 @@ The implementation plan uses the following exact V1 target files. Adding another
   Implement only the code/configuration required to satisfy the behavior above. Do not implement responsibilities from later tasks or packages.
 
 - [ ] **Step 4: Run focused GREEN verification**
-  - Run: `./vendor/bin/pest packages/Rehla/Core/tests/Feature/PackageBootTest.php`
+  - Run: `./vendor/bin/pest packages/rehla/core/tests/Feature/PackageBootTest.php`
   - Run: `composer validate`
 
   Expected after implementation: exit code 0 for the applicable focused commands and no new warnings treated as project failures.
@@ -121,12 +125,12 @@ Do not include unrelated working-tree changes in the commit.
 ### Task 2: Define public contracts and boundary tests
 
 **Files:**
-- Create: `packages/Rehla/Core/src/Contracts/MenuRegistry.php`
-- Create: `packages/Rehla/Core/src/Contracts/AclRegistry.php`
-- Create: `packages/Rehla/Core/src/Contracts/SystemConfigRepository.php`
-- Create: `packages/Rehla/Core/src/Contracts/CurrentLocale.php`
-- Create: `packages/Rehla/Core/src/Contracts/CurrentCurrency.php`
-- Create: `packages/Rehla/Core/tests/Architecture/BoundaryTest.php`
+- Create: `packages/rehla/core/src/Contracts/MenuRegistry.php`
+- Create: `packages/rehla/core/src/Contracts/AclRegistry.php`
+- Create: `packages/rehla/core/src/Contracts/SystemConfigRepository.php`
+- Create: `packages/rehla/core/src/Contracts/CurrentLocale.php`
+- Create: `packages/rehla/core/src/Contracts/CurrentCurrency.php`
+- Create: `packages/rehla/core/tests/Architecture/BoundaryTest.php`
 
 **Interfaces:**
 - Consumes: approved direct dependency contracts from `foundation`
@@ -141,7 +145,7 @@ Do not include unrelated working-tree changes in the commit.
   For behavior-bearing PHP work, create the smallest Pest test that fails because the required production behavior is absent. For configuration/generated metadata, use the first executable validation command as the red gate.
 
 - [ ] **Step 2: Run the focused RED/gate command**
-  - Run: `./vendor/bin/pest packages/Rehla/Core/tests/Architecture/BoundaryTest.php`
+  - Run: `./vendor/bin/pest packages/rehla/core/tests/Architecture/BoundaryTest.php`
 
   Expected before implementation: the new behavior test fails for the intended missing behavior, or the validation gate identifies the not-yet-configured requirement.
 
@@ -150,7 +154,7 @@ Do not include unrelated working-tree changes in the commit.
   Implement only the code/configuration required to satisfy the behavior above. Do not implement responsibilities from later tasks or packages.
 
 - [ ] **Step 4: Run focused GREEN verification**
-  - Run: `./vendor/bin/pest packages/Rehla/Core/tests/Architecture/BoundaryTest.php`
+  - Run: `./vendor/bin/pest packages/rehla/core/tests/Architecture/BoundaryTest.php`
 
   Expected after implementation: exit code 0 for the applicable focused commands and no new warnings treated as project failures.
 
@@ -172,13 +176,13 @@ Do not include unrelated working-tree changes in the commit.
 ### Task 3: Implement package-owned persistence
 
 **Files:**
-- Create: `packages/Rehla/Core/src/Database/Migrations/2026_08_22_010001_create_core_config_table.php`
-- Create: `packages/Rehla/Core/src/Database/Migrations/2026_08_22_010002_create_locales_table.php`
-- Create: `packages/Rehla/Core/src/Database/Migrations/2026_08_22_010003_create_currencies_table.php`
-- Create: `packages/Rehla/Core/src/Models/CoreConfig.php`
-- Create: `packages/Rehla/Core/src/Models/Locale.php`
-- Create: `packages/Rehla/Core/src/Models/Currency.php`
-- Create: `packages/Rehla/Core/tests/Feature/PersistenceTest.php`
+- Create: `packages/rehla/core/src/Database/Migrations/2026_08_22_010001_create_core_config_table.php`
+- Create: `packages/rehla/core/src/Database/Migrations/2026_08_22_010002_create_locales_table.php`
+- Create: `packages/rehla/core/src/Database/Migrations/2026_08_22_010003_create_currencies_table.php`
+- Create: `packages/rehla/core/src/Models/CoreConfig.php`
+- Create: `packages/rehla/core/src/Models/Locale.php`
+- Create: `packages/rehla/core/src/Models/Currency.php`
+- Create: `packages/rehla/core/tests/Feature/PersistenceTest.php`
 
 **Interfaces:**
 - Consumes: approved direct dependency contracts from `foundation`
@@ -193,7 +197,7 @@ Do not include unrelated working-tree changes in the commit.
   For behavior-bearing PHP work, create the smallest Pest test that fails because the required production behavior is absent. For configuration/generated metadata, use the first executable validation command as the red gate.
 
 - [ ] **Step 2: Run the focused RED/gate command**
-  - Run: `./vendor/bin/pest packages/Rehla/Core/tests/Feature/PersistenceTest.php`
+  - Run: `./vendor/bin/pest packages/rehla/core/tests/Feature/PersistenceTest.php`
 
   Expected before implementation: the new behavior test fails for the intended missing behavior, or the validation gate identifies the not-yet-configured requirement.
 
@@ -202,7 +206,7 @@ Do not include unrelated working-tree changes in the commit.
   Implement only the code/configuration required to satisfy the behavior above. Do not implement responsibilities from later tasks or packages.
 
 - [ ] **Step 4: Run focused GREEN verification**
-  - Run: `./vendor/bin/pest packages/Rehla/Core/tests/Feature/PersistenceTest.php`
+  - Run: `./vendor/bin/pest packages/rehla/core/tests/Feature/PersistenceTest.php`
   - Run: `php artisan migrate:fresh --env=testing --force`
 
   Expected after implementation: exit code 0 for the applicable focused commands and no new warnings treated as project failures.
@@ -225,13 +229,13 @@ Do not include unrelated working-tree changes in the commit.
 ### Task 4: Implement the smallest vertical service path
 
 **Files:**
-- Create: `packages/Rehla/Core/src/Menu/MenuManager.php`
-- Create: `packages/Rehla/Core/src/Acl/AclManager.php`
-- Create: `packages/Rehla/Core/src/SystemConfig/SystemConfigManager.php`
-- Create: `packages/Rehla/Core/src/SystemConfig/DatabaseSystemConfigRepository.php`
-- Create: `packages/Rehla/Core/src/Support/RequestId.php`
-- Create: `packages/Rehla/Core/src/Http/Middleware/EnsureRequestId.php`
-- Create: `packages/Rehla/Core/tests/Feature/PrimaryBehaviorTest.php`
+- Create: `packages/rehla/core/src/Menu/MenuManager.php`
+- Create: `packages/rehla/core/src/Acl/AclManager.php`
+- Create: `packages/rehla/core/src/SystemConfig/SystemConfigManager.php`
+- Create: `packages/rehla/core/src/SystemConfig/DatabaseSystemConfigRepository.php`
+- Create: `packages/rehla/core/src/Support/RequestId.php`
+- Create: `packages/rehla/core/src/Http/Middleware/EnsureRequestId.php`
+- Create: `packages/rehla/core/tests/Feature/PrimaryBehaviorTest.php`
 
 **Interfaces:**
 - Consumes: approved direct dependency contracts from `foundation`
@@ -246,7 +250,7 @@ Do not include unrelated working-tree changes in the commit.
   For behavior-bearing PHP work, create the smallest Pest test that fails because the required production behavior is absent. For configuration/generated metadata, use the first executable validation command as the red gate.
 
 - [ ] **Step 2: Run the focused RED/gate command**
-  - Run: `./vendor/bin/pest packages/Rehla/Core/tests/Feature/PrimaryBehaviorTest.php`
+  - Run: `./vendor/bin/pest packages/rehla/core/tests/Feature/PrimaryBehaviorTest.php`
 
   Expected before implementation: the new behavior test fails for the intended missing behavior, or the validation gate identifies the not-yet-configured requirement.
 
@@ -255,7 +259,7 @@ Do not include unrelated working-tree changes in the commit.
   Implement only the code/configuration required to satisfy the behavior above. Do not implement responsibilities from later tasks or packages.
 
 - [ ] **Step 4: Run focused GREEN verification**
-  - Run: `./vendor/bin/pest packages/Rehla/Core/tests/Feature/PrimaryBehaviorTest.php`
+  - Run: `./vendor/bin/pest packages/rehla/core/tests/Feature/PrimaryBehaviorTest.php`
 
   Expected after implementation: exit code 0 for the applicable focused commands and no new warnings treated as project failures.
 
@@ -277,7 +281,7 @@ Do not include unrelated working-tree changes in the commit.
 ### Task 5: Implement security invariants as regression tests
 
 **Files:**
-- Create: `packages/Rehla/Core/tests/Feature/SecurityInvariantTest.php`
+- Create: `packages/rehla/core/tests/Feature/SecurityInvariantTest.php`
 
 **Interfaces:**
 - Consumes: approved direct dependency contracts from `foundation`
@@ -293,7 +297,7 @@ Do not include unrelated working-tree changes in the commit.
   For behavior-bearing PHP work, create the smallest Pest test that fails because the required production behavior is absent. For configuration/generated metadata, use the first executable validation command as the red gate.
 
 - [ ] **Step 2: Run the focused RED/gate command**
-  - Run: `./vendor/bin/pest packages/Rehla/Core/tests/Feature/SecurityInvariantTest.php`
+  - Run: `./vendor/bin/pest packages/rehla/core/tests/Feature/SecurityInvariantTest.php`
 
   Expected before implementation: the new behavior test fails for the intended missing behavior, or the validation gate identifies the not-yet-configured requirement.
 
@@ -302,7 +306,7 @@ Do not include unrelated working-tree changes in the commit.
   Implement only the code/configuration required to satisfy the behavior above. Do not implement responsibilities from later tasks or packages.
 
 - [ ] **Step 4: Run focused GREEN verification**
-  - Run: `./vendor/bin/pest packages/Rehla/Core/tests/Feature/SecurityInvariantTest.php`
+  - Run: `./vendor/bin/pest packages/rehla/core/tests/Feature/SecurityInvariantTest.php`
 
   Expected after implementation: exit code 0 for the applicable focused commands and no new warnings treated as project failures.
 
@@ -324,8 +328,8 @@ Do not include unrelated working-tree changes in the commit.
 ### Task 6: Implement typed events and secondary-reaction boundary
 
 **Files:**
-- Create: `packages/Rehla/Core/src/Events/SystemConfigChanged.php`
-- Create: `packages/Rehla/Core/tests/Feature/EventsTest.php`
+- Create: `packages/rehla/core/src/Events/SystemConfigChanged.php`
+- Create: `packages/rehla/core/tests/Feature/EventsTest.php`
 
 **Interfaces:**
 - Consumes: approved direct dependency contracts from `foundation`
@@ -340,7 +344,7 @@ Do not include unrelated working-tree changes in the commit.
   For behavior-bearing PHP work, create the smallest Pest test that fails because the required production behavior is absent. For configuration/generated metadata, use the first executable validation command as the red gate.
 
 - [ ] **Step 2: Run the focused RED/gate command**
-  - Run: `./vendor/bin/pest packages/Rehla/Core/tests/Feature/EventsTest.php`
+  - Run: `./vendor/bin/pest packages/rehla/core/tests/Feature/EventsTest.php`
 
   Expected before implementation: the new behavior test fails for the intended missing behavior, or the validation gate identifies the not-yet-configured requirement.
 
@@ -349,7 +353,7 @@ Do not include unrelated working-tree changes in the commit.
   Implement only the code/configuration required to satisfy the behavior above. Do not implement responsibilities from later tasks or packages.
 
 - [ ] **Step 4: Run focused GREEN verification**
-  - Run: `./vendor/bin/pest packages/Rehla/Core/tests/Feature/EventsTest.php`
+  - Run: `./vendor/bin/pest packages/rehla/core/tests/Feature/EventsTest.php`
 
   Expected after implementation: exit code 0 for the applicable focused commands and no new warnings treated as project failures.
 
@@ -387,7 +391,7 @@ Do not include unrelated working-tree changes in the commit.
   For behavior-bearing PHP work, create the smallest Pest test that fails because the required production behavior is absent. For configuration/generated metadata, use the first executable validation command as the red gate.
 
 - [ ] **Step 2: Run the focused RED/gate command**
-  - Run: `./vendor/bin/pest packages/Rehla/Core/tests`
+  - Run: `./vendor/bin/pest packages/rehla/core/tests`
 
   Expected before implementation: the new behavior test fails for the intended missing behavior, or the validation gate identifies the not-yet-configured requirement.
 
@@ -396,7 +400,7 @@ Do not include unrelated working-tree changes in the commit.
   Implement only the code/configuration required to satisfy the behavior above. Do not implement responsibilities from later tasks or packages.
 
 - [ ] **Step 4: Run focused GREEN verification**
-  - Run: `./vendor/bin/pest packages/Rehla/Core/tests`
+  - Run: `./vendor/bin/pest packages/rehla/core/tests`
   - Run: `./vendor/bin/pest tests/Architecture`
   - Run: `git diff --check`
 

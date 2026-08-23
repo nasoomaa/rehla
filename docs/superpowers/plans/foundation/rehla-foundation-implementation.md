@@ -1,353 +1,558 @@
-# Rehla Foundation Implementation Plan
+# Rehla Foundation Completion Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use `superpowers:subagent-driven-development` (recommended) or `superpowers:executing-plans` to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Establish the Laravel 13/PHP 8.5 monorepo foundation, deterministic first-party package loading, PostgreSQL/test/frontend conventions, and architecture quality gates before any Rehla domain package is implemented.
+**Goal:** Complete and harden the existing Laravel 13/PHP 8.5 M0 baseline with executable monorepo contracts, PostgreSQL-safe test conventions, shared package testing, static analysis/formatting, a warning-free Alpine/Tailwind/Vite entrypoint, Playwright smoke coverage, and fresh Foundation evidence.
 
-**Architecture:** This plan implements one Rehla execution unit only. It consumes already-approved dependencies (repository baseline only), keeps the package boundary from its design spec, and defers downstream behavior to later plans. Every behavior-bearing task uses TDD and every task ends with fresh verification and a focused commit.
+**Architecture:** Commit `5055922` already contains the Laravel skeleton, all 17 first-party package stubs, explicit path repositories, provider order, a partial architecture suite, and initial CI. Preserve that baseline and add only missing Foundation responsibilities at repository/application-infrastructure level. Architecture and safety rules are executable test-support contracts; no Core, DataGrid, Dashboard, API, or domain behavior is implemented.
 
-**Tech Stack:** PHP 8.5.4; Composer 2.9.5; Laravel 13.x; PostgreSQL; Pest; Laravel Testbench where package isolation needs it; Blade/Tailwind/Alpine/Vite and Playwright only for Dashboard/frontend units.
+**Tech Stack:** PHP 8.5.4; Composer 2.9.5; Laravel 13.x; PostgreSQL; Pest 4; Orchestra Testbench 11; Larastan 3.10; Pint; Node 24; Vite 8; Tailwind CSS 4; Alpine.js 3.16; Playwright 1.62.
 
 **Spec:** `docs/superpowers/specs/foundation/rehla-foundation-design.md`  
 **Parent Spec:** `docs/superpowers/specs/2026-08-22-rehla-platform-design.md`
 
 ## Global Constraints
 
-- PHP runtime target is exactly the active PHP 8.5.4 environment; do not downgrade it.
-- Laravel target is 13.x and dependencies must be verified compatible before installation.
-- PostgreSQL is the database target.
-- First-party package dependencies must remain acyclic.
-- `Core` remains business-agnostic.
-- Dashboard/API are presentation layers and may not absorb domain business logic.
+- PHP runtime target is exactly PHP 8.5.4; do not downgrade it.
+- Laravel target is 13.x; dependency changes must be verified compatible with PHP 8.5.4 and Laravel 13 before installation.
+- PostgreSQL is the application and test database target; SQLite is not an accepted Foundation test substitute.
+- Test database names must end in `_testing`; destructive test database helpers must fail before touching any other database.
+- Canonical first-party paths are lowercase `packages/rehla/*`, matching the parent spec and committed M0 convention.
+- First-party Composer dependencies and provider order must remain deterministic and acyclic.
+- `Core` remains business-agnostic; domain packages must not depend on Dashboard or API.
+- Dashboard/API remain presentation layers; this unit creates no Dashboard screen, API endpoint, domain model, migration, or business service.
 - Money never uses binary floating point.
 - Private passport/identity/visa/payment-proof media must never become public ImageCache content.
 - Admin authorization fails closed.
-- Do not print secret environment values; inspect presence/names or redact values.
-- Do not implement another execution unit merely because its future interface is convenient.
-- Fresh verification evidence is required before task/package completion claims.
+- Never print secret environment values; inspect only names/presence or redact values.
+- Generated/configuration changes still require an executable failing gate; do not use a command that already passes as a claimed RED.
+- Every behavior change follows RED → verify RED → GREEN → verify GREEN → REFACTOR → verify → task review → commit.
+- Fresh verification evidence is required before task and Foundation completion claims.
 
 ---
 
 ## Preflight — required before Task 1
 
-1. Read the parent spec and `docs/superpowers/specs/foundation/rehla-foundation-design.md` completely.
+1. Read both binding specs and this complete plan.
 2. Run `git status --short`, `git branch --show-current`, and `git log --oneline -n 10`.
-3. Use `superpowers:using-git-worktrees` to create/verify an isolated workspace; never implement on main/master without explicit approval.
-4. Verify `php -v`, `composer --version`, and the current baseline tests.
-5. Inspect actual repository paths referenced below. If a referenced path conflicts with an already-approved repository convention, stop execution and amend this plan/spec rather than silently inventing a second convention.
-6. Create the SDD progress ledger for this plan when using subagent-driven development.
+3. Respect the user's explicit instruction to execute on `main`; preserve all pre-existing working-tree changes and stage only exact task pathspecs.
+4. Run `php -v`, `composer --version`, `node --version`, and `npm --version` without printing environment values.
+5. Install lockfile dependencies if absent: `composer install --no-interaction --prefer-dist` and `npm install`.
+6. Run the unchanged baseline: `composer validate`, `./vendor/bin/pest`, `php artisan about --only=environment`, and `npm run build`. Record warnings as work to resolve; do not call a warning-producing gate pristine.
+7. Initialize/resume this plan's SDD ledger with `scripts/sdd-workspace` and resume only the first task lacking `Task <N>: complete`.
+
+## Existing Baseline — preserve, test, do not recreate
+
+- Laravel 13 application skeleton and `/up` health route.
+- Seventeen lowercase `packages/rehla/*` Composer packages and provider stubs.
+- Root path repositories and explicit provider order in `bootstrap/providers.php`.
+- Pest/Orchestra dependencies and registered `tests/Architecture` suite.
+- Initial package-boundary tests and GitHub Actions PostgreSQL service.
+- Root Tailwind 4/Vite 8 build scaffold.
+
+## Plan-Specific SDD Review/Commit Order
+
+The user's binding order overrides the stock SDD template for this plan: task review occurs before commit.
+
+1. The implementer performs RED, verified RED, minimum GREEN, verified GREEN, refactor, and final focused verification, but does not commit.
+2. The controller writes a review package containing the stat and unified diff restricted to the paths listed in that task's Files block; user-owned paths are excluded.
+3. A fresh task reviewer returns both spec-compliance and code-quality verdicts.
+4. Fix rounds remain uncommitted and use path-filtered diffs from the prior reviewed file state.
+5. Only after the task review is clean does the original implementer stage the exact task paths, commit with the specified message, append its report, and return the commit SHA.
+6. The controller verifies the commit diff and records `Task <N>: complete` in the ledger before dispatching the next task.
 
 ## File/Responsibility Map
 
-- `composer.json` / Laravel bootstrap — application/package integration where this unit requires it
-- `tests/Architecture/` — cross-package rules
-- `docs/superpowers/evidence/` — fresh gate evidence
+- `tests/Support/Architecture/PackageDependencyGraph.php` — test-only manifest graph parser and validator.
+- `tests/Architecture/PackageDependencyTest.php` — exact direct-dependency and cycle contract.
+- `tests/Support/Architecture/MonorepoConfiguration.php` — test-only root repository/provider validator.
+- `tests/Architecture/MonorepoConfigurationTest.php` — deterministic path/provider contract.
+- `.env.example`, `.env.testing.example`, `phpunit.xml`, `.github/workflows/ci.yml` — PostgreSQL and secret-safe environment conventions.
+- `tests/Support/TestDatabaseGuard.php` — fail-closed protection for test database configuration.
+- `tests/TestCase.php`, `tests/Support/RehlaPackageTestCase.php` — application/package test boot conventions.
+- `phpstan.neon`, `composer.json`, `composer.lock` — Larastan/Pint gates.
+- `package.json`, `package-lock.json`, `resources/js/app.js`, `vite.config.js` — Alpine/Tailwind/Vite baseline.
+- `playwright.config.ts`, `tests/e2e/*`, `routes/web.php`, `resources/views/foundation-smoke.blade.php` — testing-only browser smoke surface.
+- `docs/superpowers/evidence/foundation-gate.md` — redacted summaries of fresh final commands.
 
 ## Task Sequence
 
-
-### Task 1: Capture and protect repository baseline
+### Task 1: Enforce the complete first-party dependency DAG
 
 **Files:**
-- Modify: `.gitignore` only if `.worktrees/` is not already ignored
-- Create: `tests/Architecture/ArchitectureHarnessTest.php`
+- Modify: `tests/Architecture/DependencyTest.php`
+- Create: `tests/Support/Architecture/PackageDependencyGraph.php`
+- Create: `tests/Architecture/PackageDependencyTest.php`
 
 **Interfaces:**
-- Consumes: approved direct dependency contracts from None beyond the repository baseline.
-- Produces: only interfaces declared in `docs/superpowers/specs/foundation/rehla-foundation-design.md` for this task's responsibility.
+- Consumes: each `packages/rehla/*/composer.json` `name` and `require` map.
+- Produces: `Tests\Support\Architecture\PackageDependencyGraph::violations(string $packagesRoot, array $expected): array<int,string>`.
 
-- [ ] **Step 1: Write the failing test or executable gate first**
+- [ ] **Step 1: Write the failing graph tests**
 
-  Required behavior:
-  - Proves the application/test runner starts from the active PHP 8.5/Laravel 13 environment
-  - Proves the architecture-test directory is executable
+  Create a temporary two-package fixture whose requirements form `core → catalog → core`; expect the literal cycle `circular dependency: rehla/catalog -> rehla/core -> rehla/catalog`. Test the real manifests against this exact approved map and expect `[]`:
 
-  For behavior-bearing PHP work, create the smallest Pest test that fails because the required production behavior is absent. For configuration/generated metadata, use the first executable validation command as the red gate.
+  ```php
+  $expected = [
+      'rehla/core' => [],
+      'rehla/datagrid' => ['rehla/core'],
+      'rehla/rule' => ['rehla/core'],
+      'rehla/media' => ['rehla/core'],
+      'rehla/image-cache' => ['rehla/core', 'rehla/media'],
+      'rehla/customers' => ['rehla/core'],
+      'rehla/admin-users' => ['rehla/core'],
+      'rehla/catalog' => ['rehla/core'],
+      'rehla/cart-rule' => ['rehla/core', 'rehla/rule', 'rehla/catalog', 'rehla/customers'],
+      'rehla/sales' => ['rehla/core', 'rehla/catalog', 'rehla/customers'],
+      'rehla/payment' => ['rehla/core', 'rehla/sales', 'rehla/media'],
+      'rehla/checkout' => ['rehla/core', 'rehla/catalog', 'rehla/customers', 'rehla/cart-rule', 'rehla/sales', 'rehla/payment'],
+      'rehla/applications' => ['rehla/core', 'rehla/sales', 'rehla/customers', 'rehla/media'],
+      'rehla/notifications' => ['rehla/core'],
+      'rehla/audit-log' => ['rehla/core'],
+      'rehla/dashboard' => ['rehla/core', 'rehla/datagrid', 'rehla/catalog', 'rehla/customers', 'rehla/admin-users', 'rehla/cart-rule', 'rehla/sales', 'rehla/payment', 'rehla/checkout', 'rehla/applications', 'rehla/media', 'rehla/image-cache', 'rehla/audit-log'],
+      'rehla/api' => ['rehla/core', 'rehla/catalog', 'rehla/customers', 'rehla/cart-rule', 'rehla/checkout', 'rehla/sales', 'rehla/payment', 'rehla/applications'],
+  ];
+  ```
 
-- [ ] **Step 2: Run the focused RED/gate command**
-  - Run: `php -v`
+- [ ] **Step 2: Verify RED**
 
-  Expected before implementation: the new behavior test fails for the intended missing behavior, or the validation gate identifies the not-yet-configured requirement.
+  Run: `./vendor/bin/pest tests/Architecture/PackageDependencyTest.php`
 
-- [ ] **Step 3: Implement the minimum approved behavior**
+  Expected: if the missing helper errors, add only its signature returning `[]`, rerun, and verify a normal assertion failure because the invalid cycle is accepted.
 
-  Implement only the code/configuration required to satisfy the behavior above. Do not implement responsibilities from later tasks or packages.
+- [ ] **Step 3: Implement minimum GREEN**
 
-- [ ] **Step 4: Run focused GREEN verification**
-  - Run: `php -v`
-  - Run: `composer --version`
-  - Run: `composer validate`
-  - Run: `./vendor/bin/pest tests/Architecture/ArchitectureHarnessTest.php`
+  Implement `violations()` to discover immediate child manifests, collect only `rehla/*` requirements, report missing/unexpected packages and exact direct-dependency differences, and use deterministic depth-first traversal with `visiting`/`visited` sets to report cycles. Return sorted unique messages. Preserve the existing Core/Catalog source-boundary assertions in `DependencyTest.php` and extend them so all non-presentation package namespaces are forbidden from using `Rehla\Dashboard` or `Rehla\Api`. Do not add package runtime code.
 
-  Expected after implementation: exit code 0 for the applicable focused commands and no new warnings treated as project failures.
+- [ ] **Step 4: Verify GREEN**
 
-- [ ] **Step 5: Refactor while green**
+  Run: `./vendor/bin/pest tests/Architecture/PackageDependencyTest.php`
 
-  Remove duplication, improve naming and tighten package boundaries without adding behavior. Re-run the focused test after refactor.
+  Expected: the malicious fixture is rejected and the real graph matches the approved map.
 
-- [ ] **Step 6: Commit the task**
+- [ ] **Step 5: REFACTOR and verify**
 
-```bash
-git status --short
-git diff --check
-git add -p
-git commit -m "feat(rehla-foundation): capture and protect repository baseline"
-```
+  Extract manifest decoding/DFS only if it removes duplication. Run the focused test and then `./vendor/bin/pest tests/Architecture`.
 
-Do not include unrelated working-tree changes in the commit.
+- [ ] **Step 6: Task review and commit**
 
-### Task 2: Configure first-party Composer monorepo conventions
+  ```bash
+  git diff --check
+  git add tests/Architecture/DependencyTest.php tests/Architecture/PackageDependencyTest.php tests/Support/Architecture/PackageDependencyGraph.php
+  git commit -m "test(rehla-foundation): enforce package dependency graph"
+  ```
+
+### Task 2: Protect deterministic Composer paths and provider order
 
 **Files:**
 - Modify: `composer.json`
-- Modify: `bootstrap/providers.php` or the existing Laravel 13 provider registry chosen by the repository
+- Modify: `composer.lock`
+- Create: `tests/Support/Architecture/MonorepoConfiguration.php`
+- Create: `tests/Architecture/MonorepoConfigurationTest.php`
 
 **Interfaces:**
-- Consumes: approved direct dependency contracts from None beyond the repository baseline.
-- Produces: only interfaces declared in `docs/superpowers/specs/foundation/rehla-foundation-design.md` for this task's responsibility.
+- Consumes: decoded root `composer.json`; returned array from `bootstrap/providers.php`.
+- Produces: `Tests\Support\Architecture\MonorepoConfiguration::violations(array $composer, array $providers): array<int,string>`.
 
-- [ ] **Step 1: Write the failing test or executable gate first**
+- [ ] **Step 1: Write failing configuration-contract tests**
 
-  Required behavior:
-  - Root Composer can resolve `packages/Rehla/*` through deterministic path repositories
-  - Provider registration has one explicit deterministic first-party path
+  Test a literal invalid fixture containing a missing package path, duplicated path, unbound first-party version `*@dev`, and reversed Core/Catalog providers. Expect one literal violation for each break. Test real files and expect no violations.
 
-  For behavior-bearing PHP work, create the smallest Pest test that fails because the required production behavior is absent. For configuration/generated metadata, use the first executable validation command as the red gate.
+- [ ] **Step 2: Verify RED**
 
-- [ ] **Step 2: Run the focused RED/gate command**
-  - Run: `composer validate`
+  Run: `./vendor/bin/pest tests/Architecture/MonorepoConfigurationTest.php`
 
-  Expected before implementation: the new behavior test fails for the intended missing behavior, or the validation gate identifies the not-yet-configured requirement.
+  Expected: after adding only a compile-safe `violations(): array { return []; }` shell if needed, the invalid fixture fails because it returns no violations.
 
-- [ ] **Step 3: Implement the minimum approved behavior**
+- [ ] **Step 3: Implement minimum GREEN**
 
-  Implement only the code/configuration required to satisfy the behavior above. Do not implement responsibilities from later tasks or packages.
+  Require one unique path repository and root requirement for every real `packages/rehla/*` directory, no path outside that lowercase root, explicit first-party constraint `dev-main`, and the exact section-35 provider sequence preceded only by `App\Providers\AppServiceProvider`. Change root first-party constraints from `*@dev` to `dev-main`; preserve package manifests and already-correct repository/provider lists.
 
-- [ ] **Step 4: Run focused GREEN verification**
-  - Run: `composer validate`
-  - Run: `composer dump-autoload`
-  - Run: `php artisan about`
+- [ ] **Step 4: Verify GREEN**
 
-  Expected after implementation: exit code 0 for the applicable focused commands and no new warnings treated as project failures.
+  ```bash
+  composer update 'rehla/*' --with-dependencies --no-interaction
+  composer validate --strict
+  composer dump-autoload
+  php artisan about --only=environment
+  ./vendor/bin/pest tests/Architecture/MonorepoConfigurationTest.php
+  ```
 
-- [ ] **Step 5: Refactor while green**
+  Expected: exit 0, no unbound first-party warnings, and Laravel boots.
 
-  Remove duplication, improve naming and tighten package boundaries without adding behavior. Re-run the focused test after refactor.
+- [ ] **Step 5: REFACTOR and verify**
 
-- [ ] **Step 6: Commit the task**
+  Keep expected literals in the test, not configuration code. Re-run Task 1 and Task 2 tests.
 
-```bash
-git status --short
-git diff --check
-git add -p
-git commit -m "feat(rehla-foundation): configure first-party composer monorepo conventions"
-```
+- [ ] **Step 6: Task review and commit**
 
-Do not include unrelated working-tree changes in the commit.
+  ```bash
+  git diff --check
+  git add composer.json composer.lock tests/Architecture/MonorepoConfigurationTest.php tests/Support/Architecture/MonorepoConfiguration.php
+  git commit -m "test(rehla-foundation): protect monorepo loading order"
+  ```
 
-### Task 3: Establish package-test and architecture dependency conventions
+### Task 3: Enforce PostgreSQL-only safe test conventions
 
 **Files:**
-- Create: `tests/Architecture/PackageDependencyTest.php`
+- Modify: `.env.example`
+- Create: `.env.testing.example`
+- Modify: `phpunit.xml`
+- Modify: `.github/workflows/ci.yml`
+- Create: `tests/Support/TestDatabaseGuard.php`
+- Create: `tests/Architecture/TestDatabaseSafetyTest.php`
+- Modify: `tests/TestCase.php`
+
+**Interfaces:**
+- Produces: `Tests\Support\TestDatabaseGuard::assertSafe(string $environment, string $connection, string $database): void`.
+- Consumed by: root/package test base classes before database-reset traits can run.
+
+- [ ] **Step 1: Write failing configuration and guard tests**
+
+  Parse `phpunit.xml` and assert `APP_ENV=testing`, `DB_CONNECTION=pgsql`, and `DB_DATABASE=rehla_testing`. Table-test that the guard throws `RuntimeException` for environment `local` or `production`, connection `sqlite`, and database `:memory:`, `rehla`, `testing`, or empty; accept only `testing` + `pgsql` + a name ending `_testing`.
+
+- [ ] **Step 2: Verify RED**
+
+  Run: `./vendor/bin/pest tests/Architecture/TestDatabaseSafetyTest.php`
+
+  Expected: XML assertion fails with actual `sqlite`. If the missing guard errors, add only its signature with an empty body, rerun, and verify unsafe cases fail normally.
+
+- [ ] **Step 3: Implement minimum GREEN**
+
+  Make the guard throw before any connection opens unless all predicates hold. Call it from `Tests\TestCase::setUp()` with the three PHPUnit environment values immediately before `parent::setUp()`, so a `RefreshDatabase` trait cannot run first.
+
+  Use these committed, non-secret PostgreSQL defaults in `.env.example` and `.env.testing.example` (the latter uses `rehla_testing`):
+
+  ```dotenv
+  DB_CONNECTION=pgsql
+  DB_HOST=127.0.0.1
+  DB_PORT=5432
+  DB_DATABASE=rehla
+  DB_USERNAME=postgres
+  DB_PASSWORD=
+  ```
+
+  Change CI triggers from `master` to `main`, service database to `rehla_testing`, add `pdo_pgsql`, and remove SQLite extensions. Keep CI test credentials only in job environment and never echo them.
+
+- [ ] **Step 4: Verify GREEN**
+
+  ```bash
+  ./vendor/bin/pest tests/Architecture/TestDatabaseSafetyTest.php
+  APP_ENV=testing DB_CONNECTION=pgsql DB_DATABASE=rehla_testing ./vendor/bin/pest tests/Architecture
+  ```
+
+  Expected: safety tests pass without connecting; no secret values appear.
+
+- [ ] **Step 5: REFACTOR and verify**
+
+  Centralize predicates in `TestDatabaseGuard`; re-run focused and architecture tests.
+
+- [ ] **Step 6: Task review and commit**
+
+  ```bash
+  git diff --check
+  git add .env.example .env.testing.example phpunit.xml .github/workflows/ci.yml tests/Support/TestDatabaseGuard.php tests/Architecture/TestDatabaseSafetyTest.php tests/TestCase.php
+  git commit -m "test(rehla-foundation): guard postgresql test database"
+  ```
+
+### Task 4: Establish the shared Orchestra Testbench package base
+
+**Files:**
 - Create: `tests/Support/RehlaPackageTestCase.php`
+- Create: `tests/Fixtures/Foundation/FixturePackageServiceProvider.php`
+- Create: `tests/Package/FoundationBootstrapTest.php`
+- Modify: `tests/Pest.php`
+- Modify: `phpunit.xml`
 
 **Interfaces:**
-- Consumes: approved direct dependency contracts from None beyond the repository baseline.
-- Produces: only interfaces declared in `docs/superpowers/specs/foundation/rehla-foundation-design.md` for this task's responsibility.
+- Consumes: `TestDatabaseGuard::assertSafe()`.
+- Produces: abstract `Tests\Support\RehlaPackageTestCase` with `protected function getPackageProviders($app): array` and `protected function packageProviders(): array`.
 
-- [ ] **Step 1: Write the failing test or executable gate first**
+- [ ] **Step 1: Write failing package-bootstrap test**
 
-  Required behavior:
-  - Architecture test reads declared package dependencies and can reject a known-invalid fixture/declaration
-  - Shared package test base boots Laravel consistently
+  Register a `Package` testsuite in `phpunit.xml` and bind that directory to `RehlaPackageTestCase` in `tests/Pest.php`. The fixture provider binds `foundation.fixture` to literal `booted`; the focused Pest test supplies it through `packageProviders()`. Assert Testbench resolves the binding and reports `testing`, `pgsql`, and `rehla_testing`.
 
-  For behavior-bearing PHP work, create the smallest Pest test that fails because the required production behavior is absent. For configuration/generated metadata, use the first executable validation command as the red gate.
+- [ ] **Step 2: Verify RED**
 
-- [ ] **Step 2: Run the focused RED/gate command**
-  - Run: `./vendor/bin/pest tests/Architecture`
+  Run: `./vendor/bin/pest tests/Package/FoundationBootstrapTest.php`
 
-  Expected before implementation: the new behavior test fails for the intended missing behavior, or the validation gate identifies the not-yet-configured requirement.
+  Expected: after resolving compile-only missing-class errors, fail because the shared base does not boot the fixture provider/configuration.
 
-- [ ] **Step 3: Implement the minimum approved behavior**
+- [ ] **Step 3: Implement minimum GREEN**
 
-  Implement only the code/configuration required to satisfy the behavior above. Do not implement responsibilities from later tasks or packages.
+  Extend `Orchestra\Testbench\TestCase`. In `defineEnvironment()`, set only test environment, PostgreSQL connection/database, array cache/session, sync queue, and array mailer; call the guard. Implement `getPackageProviders()` as a final bridge to `packageProviders()`.
 
-- [ ] **Step 4: Run focused GREEN verification**
-  - Run: `./vendor/bin/pest tests/Architecture`
+- [ ] **Step 4: Verify GREEN**
 
-  Expected after implementation: exit code 0 for the applicable focused commands and no new warnings treated as project failures.
+  Run: `./vendor/bin/pest tests/Package/FoundationBootstrapTest.php`
 
-- [ ] **Step 5: Refactor while green**
+  Expected: provider binding and safe configuration assertions pass.
 
-  Remove duplication, improve naming and tighten package boundaries without adding behavior. Re-run the focused test after refactor.
+- [ ] **Step 5: REFACTOR and verify**
 
-- [ ] **Step 6: Commit the task**
+  Keep fixture behavior under `tests/Fixtures`; leave all first-party providers untouched. Run `./vendor/bin/pest tests/Architecture tests/Package`.
 
-```bash
-git status --short
-git diff --check
-git add -p
-git commit -m "feat(rehla-foundation): establish package-test and architecture dependency conventions"
-```
+- [ ] **Step 6: Task review and commit**
 
-Do not include unrelated working-tree changes in the commit.
+  ```bash
+  git diff --check
+  git add phpunit.xml tests/Pest.php tests/Support/RehlaPackageTestCase.php tests/Fixtures/Foundation/FixturePackageServiceProvider.php tests/Package/FoundationBootstrapTest.php
+  git commit -m "test(rehla-foundation): add shared package testbench base"
+  ```
 
-### Task 4: Establish frontend admin build baseline
+### Task 5: Add Foundation formatting and static-analysis gates
 
 **Files:**
-- Modify/Create: root `package.json` as required by current repository
-- Modify/Create: `vite.config.js` as required by current repository
-- Modify/Create: Tailwind entry configuration used by the future Dashboard package
+- Modify: `composer.json`
+- Modify: `composer.lock`
+- Create: `phpstan.neon`
 
 **Interfaces:**
-- Consumes: approved direct dependency contracts from None beyond the repository baseline.
-- Produces: only interfaces declared in `docs/superpowers/specs/foundation/rehla-foundation-design.md` for this task's responsibility.
+- Produces Composer scripts `format:test` and `analyse`.
 
-- [ ] **Step 1: Write the failing test or executable gate first**
+- [ ] **Step 1: Verify RED**
 
-  Required behavior:
-  - Production frontend build succeeds
-  - Alpine/Tailwind/Vite versions are compatible with current Laravel 13 toolchain
+  ```bash
+  composer format:test
+  composer analyse
+  ```
 
-  For behavior-bearing PHP work, create the smallest Pest test that fails because the required production behavior is absent. For configuration/generated metadata, use the first executable validation command as the red gate.
+  Expected: both exit nonzero because the scripts are undefined. These are configuration gates.
 
-- [ ] **Step 2: Run the focused RED/gate command**
-  - Run: `npm install`
+- [ ] **Step 2: Implement minimum GREEN**
 
-  Expected before implementation: the new behavior test fails for the intended missing behavior, or the validation gate identifies the not-yet-configured requirement.
+  Confirm Packagist still reports Larastan 3.10 support for Illuminate 13 and PHP 8.5, then run:
 
-- [ ] **Step 3: Implement the minimum approved behavior**
+  ```bash
+  composer require --dev larastan/larastan:^3.10 --with-all-dependencies --no-interaction
+  ```
 
-  Implement only the code/configuration required to satisfy the behavior above. Do not implement responsibilities from later tasks or packages.
+  Add scripts:
 
-- [ ] **Step 4: Run focused GREEN verification**
-  - Run: `npm install`
-  - Run: `npm run build`
+  ```json
+  "format:test": "pint --test",
+  "analyse": "phpstan analyse --memory-limit=1G"
+  ```
 
-  Expected after implementation: exit code 0 for the applicable focused commands and no new warnings treated as project failures.
+  Create:
 
-- [ ] **Step 5: Refactor while green**
+  ```neon
+  includes:
+      - vendor/larastan/larastan/extension.neon
 
-  Remove duplication, improve naming and tighten package boundaries without adding behavior. Re-run the focused test after refactor.
+  parameters:
+      level: 6
+      paths:
+          - app
+          - bootstrap
+          - config
+          - packages/rehla
+          - routes
+          - tests
+      excludePaths:
+          analyse:
+              - bootstrap/cache/*.php
+  ```
 
-- [ ] **Step 6: Commit the task**
+- [ ] **Step 3: Verify GREEN**
 
-```bash
-git status --short
-git diff --check
-git add -p
-git commit -m "feat(rehla-foundation): establish frontend admin build baseline"
-```
+  ```bash
+  composer validate --strict
+  composer format:test
+  composer analyse
+  ```
 
-Do not include unrelated working-tree changes in the commit.
+  Expected: all exit 0 with no ignored-error baseline.
 
-### Task 5: Establish Playwright baseline
+- [ ] **Step 4: REFACTOR and verify**
+
+  Remove only redundant analyzer configuration; do not weaken level 6 or add blanket ignores. Re-run all three gates.
+
+- [ ] **Step 5: Task review and commit**
+
+  ```bash
+  git diff --check
+  git add composer.json composer.lock phpstan.neon
+  git commit -m "chore(rehla-foundation): add php quality gates"
+  ```
+
+### Task 6: Establish the Alpine/Tailwind/Vite and Playwright smoke gate
 
 **Files:**
-- Create/Modify: `playwright.config.ts`
-- Create: `tests/e2e/smoke.spec.ts`
+- Modify: `package.json`
+- Create/Modify: `package-lock.json`
+- Modify: `resources/js/app.js`
+- Modify: `vite.config.js`
+- Create: `resources/views/foundation-smoke.blade.php`
+- Modify: `routes/web.php`
+- Create: `playwright.config.ts`
+- Create: `tests/e2e/foundation-smoke.spec.ts`
+- Modify: `.github/workflows/ci.yml`
 
 **Interfaces:**
-- Consumes: approved direct dependency contracts from None beyond the repository baseline.
-- Produces: only interfaces declared in `docs/superpowers/specs/foundation/rehla-foundation-design.md` for this task's responsibility.
+- Produces: warning-free compiled Alpine entrypoint, testing-only `/_foundation/smoke`, and npm scripts `test:e2e`/`test:e2e:install`.
+- Consumed by: the final Foundation gate.
 
-- [ ] **Step 1: Write the failing test or executable gate first**
+- [ ] **Step 1: Write the failing browser test**
 
-  Required behavior:
-  - Browser runner can open the test application and assert a stable response without requiring future Dashboard screens
+  Create the browser test before adding dependencies, scripts, routes, views, or runtime code:
 
-  For behavior-bearing PHP work, create the smallest Pest test that fails because the required production behavior is absent. For configuration/generated metadata, use the first executable validation command as the red gate.
+  ```ts
+  import { expect, test } from '@playwright/test';
 
-- [ ] **Step 2: Run the focused RED/gate command**
-  - Run: `npx playwright test tests/e2e/smoke.spec.ts`
+  test('Laravel test application is healthy', async ({ request }) => {
+      const response = await request.get('/up');
+      expect(response.status()).toBe(200);
+  });
 
-  Expected before implementation: the new behavior test fails for the intended missing behavior, or the validation gate identifies the not-yet-configured requirement.
+  test('compiled Alpine entrypoint initializes', async ({ page }) => {
+      await page.goto('/_foundation/smoke');
+      await expect(page.locator('[data-foundation-status]')).toHaveText('ready');
+  });
+  ```
 
-- [ ] **Step 3: Implement the minimum approved behavior**
+  Run `npm run test:e2e`.
 
-  Implement only the code/configuration required to satisfy the behavior above. Do not implement responsibilities from later tasks or packages.
+  Expected RED: npm exits nonzero because the local script/runner is absent. Do not use transient `npx` installation.
 
-- [ ] **Step 4: Run focused GREEN verification**
-  - Run: `npx playwright test tests/e2e/smoke.spec.ts`
+- [ ] **Step 2: Implement minimum GREEN**
 
-  Expected after implementation: exit code 0 for the applicable focused commands and no new warnings treated as project failures.
+  Create the Blade fixture:
 
-- [ ] **Step 5: Refactor while green**
+  ```html
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <main x-data="{ status: 'pending' }" x-init="status = 'ready'">
+      <span data-foundation-status x-text="status">pending</span>
+  </main>
+  ```
 
-  Remove duplication, improve naming and tighten package boundaries without adding behavior. Re-run the focused test after refactor.
+  Register it only in testing:
 
-- [ ] **Step 6: Commit the task**
+  ```php
+  if (app()->environment('testing')) {
+      Route::view('/_foundation/smoke', 'foundation-smoke');
+  }
+  ```
 
-```bash
-git status --short
-git diff --check
-git add -p
-git commit -m "feat(rehla-foundation): establish playwright baseline"
-```
+  ```bash
+  npm install --save-dev alpinejs@^3.16.2 fontaine@^0.8.1 @playwright/test@^1.62.1
+  ```
 
-Do not include unrelated working-tree changes in the commit.
+  ```js
+  import Alpine from 'alpinejs';
 
-### Task 6: Run Foundation gate and document evidence
+  window.Alpine = Alpine;
+  Alpine.start();
+  ```
+
+  Add:
+
+  ```json
+  "test:e2e": "playwright test",
+  "test:e2e:install": "playwright install chromium"
+  ```
+
+  Configure `playwright.config.ts` with `testDir: './tests/e2e'`, base URL `http://127.0.0.1:8000`, one retry only in CI, trace on first retry, and:
+
+  ```ts
+  webServer: {
+      command: 'npm run build && php artisan serve --env=testing --host=127.0.0.1 --port=8000',
+      url: 'http://127.0.0.1:8000/up',
+      reuseExistingServer: !process.env.CI,
+      timeout: 120_000,
+  },
+  ```
+
+- [ ] **Step 3: Verify GREEN**
+
+  ```bash
+  npm install
+  npm run build
+  APP_ENV=testing php artisan route:list --path=_foundation/smoke
+  APP_ENV=production php artisan route:list --path=_foundation/smoke
+  npm run test:e2e:install
+  npm run test:e2e -- tests/e2e/foundation-smoke.spec.ts
+  ```
+
+  Expected: warning-free build, route present only in testing, and 2 Chromium tests pass.
+
+- [ ] **Step 4: Add CI gates**
+
+  Add Node 24 setup with npm cache, `npm ci`, build, Chromium installation with dependencies, Composer formatting/static analysis, and focused Playwright after Pest. Keep test-only PostgreSQL values in job environment; do not echo them.
+
+- [ ] **Step 5: REFACTOR and verify**
+
+  Keep one browser project, two stable assertions, and a minimal fixture. Add no Dashboard component/layout. Re-run Composer validation, build, route checks, and focused Playwright.
+
+- [ ] **Step 6: Task review and commit**
+
+  ```bash
+  git diff --check
+  git add package.json package-lock.json resources/js/app.js vite.config.js resources/views/foundation-smoke.blade.php routes/web.php playwright.config.ts tests/e2e/foundation-smoke.spec.ts .github/workflows/ci.yml
+  git commit -m "test(rehla-foundation): add frontend smoke gate"
+  ```
+
+### Task 7: Run the Foundation gate and document fresh evidence
 
 **Files:**
 - Create: `docs/superpowers/evidence/foundation-gate.md`
 
 **Interfaces:**
-- Consumes: approved direct dependency contracts from None beyond the repository baseline.
-- Produces: only interfaces declared in `docs/superpowers/specs/foundation/rehla-foundation-design.md` for this task's responsibility.
+- Consumes: every executable gate from Tasks 1–6.
+- Produces: redacted verification record with command, UTC timestamp, exit status, pass count, and limitations.
 
-- [ ] **Step 1: Write the failing test or executable gate first**
+- [ ] **Step 1: Run every fresh gate before writing evidence**
 
-  Required behavior:
-  - Records fresh command output summary, versions, pass/fail counts, and any explicit non-blocking limitations
+  Run separately:
 
-  For behavior-bearing PHP work, create the smallest Pest test that fails because the required production behavior is absent. For configuration/generated metadata, use the first executable validation command as the red gate.
+  ```bash
+  php -v
+  composer --version
+  php artisan about --only=environment
+  composer validate --strict
+  composer format:test
+  composer analyse
+  ./vendor/bin/pest tests/Architecture
+  php artisan test
+  npm ci
+  npm run build
+  npm run test:e2e -- tests/e2e/foundation-smoke.spec.ts
+  git diff --check
+  ```
 
-- [ ] **Step 2: Run the focused RED/gate command**
-  - Run: `composer validate`
+  Invoke `superpowers:systematic-debugging` before any fix if a command fails. Never copy environment/credential values into evidence.
 
-  Expected before implementation: the new behavior test fails for the intended missing behavior, or the validation gate identifies the not-yet-configured requirement.
+- [ ] **Step 2: Write the evidence document**
 
-- [ ] **Step 3: Implement the minimum approved behavior**
+  Record the literal heading `# Foundation Gate Evidence`; the actual UTC timestamp from `date -u +%Y-%m-%dT%H:%M:%SZ`; actual short SHA from `git rev-parse --short HEAD`; observed PHP, Composer, and Laravel versions; and the redacted statement `Database target: PostgreSQL (pgsql); database name and credentials redacted`.
 
-  Implement only the code/configuration required to satisfy the behavior above. Do not implement responsibilities from later tasks or packages.
+  Add a Markdown table with one row per Step 1 gate. Each row contains the exact command, observed numeric exit status, and observed pass/error count or warning-free build summary. Add a `## Limitations` section containing either the literal word `None` or only limitations demonstrated by the fresh output.
 
-- [ ] **Step 4: Run focused GREEN verification**
-  - Run: `composer validate`
-  - Run: `php artisan test`
-  - Run: `npm run build`
+  This documentation task is exempt from a fake RED cycle: truth comes from the executable gates, not source-text testing of human prose.
 
-  Expected after implementation: exit code 0 for the applicable focused commands and no new warnings treated as project failures.
+- [ ] **Step 3: Verify evidence**
 
-- [ ] **Step 5: Refactor while green**
+  Compare every row to immediate output, confirm no secrets/sensitive content, then run `git diff --check` and `git status --short`.
 
-  Remove duplication, improve naming and tighten package boundaries without adding behavior. Re-run the focused test after refactor.
+- [ ] **Step 4: Task review and commit**
 
-- [ ] **Step 6: Commit the task**
-
-```bash
-git status --short
-git diff --check
-git add -p
-git commit -m "feat(rehla-foundation): run foundation gate and document evidence"
-```
-
-Do not include unrelated working-tree changes in the commit.
-
+  ```bash
+  git add docs/superpowers/evidence/foundation-gate.md
+  git commit -m "docs(rehla-foundation): record foundation gate evidence"
+  ```
 
 ## Final Self-Review / Completion Gate
 
-Before the unit is offered for branch integration:
-
-- [ ] Re-read `docs/superpowers/specs/foundation/rehla-foundation-design.md` and map every requirement to an implemented task/test.
-- [ ] Search this plan and produced code for placeholder behavior (`TODO`, `TBD`, empty service methods) and remove any implementation placeholders introduced by this unit.
-- [ ] Run the complete focused package/unit suite fresh.
-- [ ] Run relevant `tests/Architecture` fresh.
-- [ ] Run `composer validate` if Composer files changed.
-- [ ] Run migration checks if this unit owns persistence.
-- [ ] Run `npm run build` and relevant Playwright tests if frontend/Admin assets changed.
-- [ ] Run `git diff --check` and inspect `git status --short`.
-- [ ] Use `superpowers:requesting-code-review` for a whole-unit review.
-- [ ] Resolve Critical and Important findings using `superpowers:receiving-code-review` discipline.
-- [ ] Use `superpowers:verification-before-completion` before stating the unit is complete.
-- [ ] Use `superpowers:finishing-a-development-branch`; do not merge/push/delete the worktree without the user's integration choice.
+- [ ] Re-read both binding specs and map every Foundation responsibility to a task/test.
+- [ ] Confirm M0 responsibilities were preserved, not recreated.
+- [ ] Search produced files for unfinished-marker strings, empty methods, broad analysis ignores, and accidental secret values.
+- [ ] Confirm no Core, DataGrid, Dashboard, API, or domain behavior was added.
+- [ ] Run `./vendor/bin/pest tests/Architecture` and `php artisan test`.
+- [ ] Run `composer validate --strict`, `composer format:test`, and `composer analyse`.
+- [ ] Verify Laravel bootstrap with `php artisan about --only=environment`; verify the smoke route under testing and production.
+- [ ] Run `npm ci`, `npm run build`, and focused Playwright.
+- [ ] Run `git diff --check`; inspect `git diff --stat`, complete diff, and `git status --short` without staging user-owned changes.
+- [ ] Use `superpowers:requesting-code-review` for whole-unit review on the most capable available model, pointing to all ledger rulings/deferred findings.
+- [ ] Resolve Critical/Important findings with one fix wave and one scoped re-review using `superpowers:receiving-code-review`.
+- [ ] Use `superpowers:verification-before-completion` with fresh output before stating Foundation is complete.
+- [ ] Use `superpowers:finishing-a-development-branch`; do not merge or push automatically.

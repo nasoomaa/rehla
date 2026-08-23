@@ -3,6 +3,7 @@
 > **Parent architecture:** `docs/superpowers/specs/2026-08-22-rehla-platform-design.md`  
 > **Execution unit:** `01 / 19`  
 > **Status:** Approved decomposition of the Rehla master architecture. This document narrows scope; it does not override the parent spec.
+> **Path convention amendment (approved 2026-08-23):** Filesystem package paths use lowercase `packages/rehla/*`; PHP namespaces remain PascalCase.
 
 
 ## 1. Goal
@@ -11,7 +12,7 @@ Provide the business-agnostic kernel consumed by Rehla packages: Menu, ACL, Syst
 
 ## 2. Scope Boundary
 
-**Implementation location:** `packages/Rehla/Core`  
+**Implementation location:** `packages/rehla/core`
 **Direct design dependencies:** `foundation`
 
 ### Owns
@@ -120,24 +121,24 @@ This unit may be considered complete only when all of the following hold:
 
 The implementation plan uses the following exact V1 target files. Adding another production file requires an explicit responsibility not already represented here; removing one requires a spec amendment.
 
-- `packages/Rehla/Core/src/Contracts/MenuRegistry.php`
-- `packages/Rehla/Core/src/Contracts/AclRegistry.php`
-- `packages/Rehla/Core/src/Contracts/SystemConfigRepository.php`
-- `packages/Rehla/Core/src/Contracts/CurrentLocale.php`
-- `packages/Rehla/Core/src/Contracts/CurrentCurrency.php`
-- `packages/Rehla/Core/src/Database/Migrations/2026_08_22_010001_create_core_config_table.php`
-- `packages/Rehla/Core/src/Database/Migrations/2026_08_22_010002_create_locales_table.php`
-- `packages/Rehla/Core/src/Database/Migrations/2026_08_22_010003_create_currencies_table.php`
-- `packages/Rehla/Core/src/Models/CoreConfig.php`
-- `packages/Rehla/Core/src/Models/Locale.php`
-- `packages/Rehla/Core/src/Models/Currency.php`
-- `packages/Rehla/Core/src/Menu/MenuManager.php`
-- `packages/Rehla/Core/src/Acl/AclManager.php`
-- `packages/Rehla/Core/src/SystemConfig/SystemConfigManager.php`
-- `packages/Rehla/Core/src/SystemConfig/DatabaseSystemConfigRepository.php`
-- `packages/Rehla/Core/src/Support/RequestId.php`
-- `packages/Rehla/Core/src/Http/Middleware/EnsureRequestId.php`
-- `packages/Rehla/Core/src/Events/SystemConfigChanged.php`
+- `packages/rehla/core/src/Contracts/MenuRegistry.php`
+- `packages/rehla/core/src/Contracts/AclRegistry.php`
+- `packages/rehla/core/src/Contracts/SystemConfigRepository.php`
+- `packages/rehla/core/src/Contracts/CurrentLocale.php`
+- `packages/rehla/core/src/Contracts/CurrentCurrency.php`
+- `packages/rehla/core/src/Database/Migrations/2026_08_22_010001_create_core_config_table.php`
+- `packages/rehla/core/src/Database/Migrations/2026_08_22_010002_create_locales_table.php`
+- `packages/rehla/core/src/Database/Migrations/2026_08_22_010003_create_currencies_table.php`
+- `packages/rehla/core/src/Models/CoreConfig.php`
+- `packages/rehla/core/src/Models/Locale.php`
+- `packages/rehla/core/src/Models/Currency.php`
+- `packages/rehla/core/src/Menu/MenuManager.php`
+- `packages/rehla/core/src/Acl/AclManager.php`
+- `packages/rehla/core/src/SystemConfig/SystemConfigManager.php`
+- `packages/rehla/core/src/SystemConfig/DatabaseSystemConfigRepository.php`
+- `packages/rehla/core/src/Support/RequestId.php`
+- `packages/rehla/core/src/Http/Middleware/EnsureRequestId.php`
+- `packages/rehla/core/src/Events/SystemConfigChanged.php`
 
 ## 11. Out-of-Scope Change Rule
 
