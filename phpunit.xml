@@ -14,6 +14,9 @@
         <testsuite name="Architecture">
             <directory>tests/Architecture</directory>
         </testsuite>
+        <testsuite name="Package">
+            <directory>tests/Package</directory>
+        </testsuite>
     </testsuites>
     <source>
         <include>

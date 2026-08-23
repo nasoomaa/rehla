@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Tests\Support\RehlaPackageTestCase;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,9 @@ use Tests\TestCase;
 pest()->extend(TestCase::class)
  // ->use(RefreshDatabase::class)
     ->in('Feature', 'Unit');
+
+pest()->extend(RehlaPackageTestCase::class)
+    ->in('Package');
 
 /*
 |--------------------------------------------------------------------------
