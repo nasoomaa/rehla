@@ -9,7 +9,7 @@ use Rehla\Core\SystemConfig\SystemConfigManager;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Support\ProvidesCorePackage;
 
-uses(ProvidesCorePackage::class, RefreshDatabase::class);
+uses(\Tests\Support\CorePackageTestCase::class, \Illuminate\Foundation\Testing\RefreshDatabase::class);
 
 test('menu manager can register and retrieve items', function () {
     $manager = app(MenuManager::class);

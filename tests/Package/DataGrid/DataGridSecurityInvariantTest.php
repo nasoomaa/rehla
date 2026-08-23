@@ -9,7 +9,7 @@ use Rehla\DataGrid\Contracts\ActionAuthorizer;
 use Rehla\DataGrid\Actions\RowAction;
 use Tests\Support\ProvidesDataGridPackage;
 
-uses(ProvidesDataGridPackage::class);
+uses(\Tests\Support\DataGridPackageTestCase::class);
 
 test('grid registry resolves only registered identities to prevent arbitrary class instantiation', function () {
     $registry = new GridRegistry();

@@ -19,8 +19,6 @@ pest()->extend(TestCase::class)
  // ->use(RefreshDatabase::class)
     ->in('Feature', 'Unit');
 
-pest()->extend(RehlaPackageTestCase::class)
-    ->in('Package');
 
 /*
 |--------------------------------------------------------------------------

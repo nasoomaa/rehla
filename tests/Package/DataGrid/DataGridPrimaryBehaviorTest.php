@@ -12,9 +12,7 @@ use Rehla\DataGrid\Actions\MassAction;
 use Rehla\DataGrid\Contracts\DataGridContract;
 use Tests\Support\ProvidesDataGridPackage;
 
-uses(ProvidesDataGridPackage::class);
-
-uses(ProvidesDataGridPackage::class);
+uses(\Tests\Support\DataGridPackageTestCase::class);
 
 test('grid registry can register and resolve a grid', function () {
     $registry = new GridRegistry();

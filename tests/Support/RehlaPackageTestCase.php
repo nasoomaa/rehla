@@ -14,7 +14,10 @@ abstract class RehlaPackageTestCase extends OrchestraTestCase
     /**
      * @return list<class-string>
      */
-    abstract protected function packageProviders(): array;
+    protected function packageProviders(): array
+    {
+        return [];
+    }
 
     protected function defineEnvironment($app): void
     {

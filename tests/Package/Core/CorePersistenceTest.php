@@ -7,7 +7,7 @@ use Rehla\Core\Models\Locale;
 use Tests\Support\ProvidesCorePackage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-uses(ProvidesCorePackage::class, RefreshDatabase::class);
+uses(\Tests\Support\CorePackageTestCase::class, \Illuminate\Foundation\Testing\RefreshDatabase::class);
 
 test('locales table exists with correct schema', function () {
     expect(Schema::hasTable('locales'))->toBeTrue()

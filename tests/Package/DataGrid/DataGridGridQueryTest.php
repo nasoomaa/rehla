@@ -8,7 +8,7 @@ use Rehla\DataGrid\Query\GridQuery;
 use Rehla\DataGrid\Query\GridQueryProcessor;
 use Tests\Support\ProvidesDataGridPackage;
 
-uses(ProvidesDataGridPackage::class);
+uses(\Tests\Support\DataGridPackageTestCase::class);
 
 test('grid registry resolves stable IDs', function () {
     $registry = new GridRegistry();

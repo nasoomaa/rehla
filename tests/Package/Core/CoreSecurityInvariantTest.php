@@ -8,7 +8,7 @@ use Rehla\Core\Support\RequestId;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Support\ProvidesCorePackage;
 
-uses(ProvidesCorePackage::class, RefreshDatabase::class);
+uses(\Tests\Support\CorePackageTestCase::class, \Illuminate\Foundation\Testing\RefreshDatabase::class);
 
 test('acl fails closed for unknown protected ability', function () {
     $manager = app(AclManager::class);

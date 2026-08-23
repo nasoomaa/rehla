@@ -4,8 +4,9 @@ namespace Tests\Support;
 
 use Rehla\DataGrid\Providers\DataGridServiceProvider;
 
-trait ProvidesDataGridPackage
+abstract class DataGridPackageTestCase extends RehlaPackageTestCase
 {
+    /** @return list<class-string> */
     protected function packageProviders(): array
     {
         return [DataGridServiceProvider::class];
