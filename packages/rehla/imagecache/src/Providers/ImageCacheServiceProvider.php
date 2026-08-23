@@ -47,7 +47,7 @@ class ImageCacheServiceProvider extends ServiceProvider
             $filenamePattern = '[ \w\\.\\/\\-\\@\(\)\=]+';
 
             $this->app['router']->get(config('imagecache.route').'/{template}/{filename}', [
-                'uses' => 'Webkul\ImageCache\Http\Controllers\ImageCacheController@getResponse',
+                'uses' => 'rehla\imagecache\Http\Controllers\ImageCacheController@getResponse',
                 'as' => 'imagecache',
             ])->where(['filename' => $filenamePattern]);
         }

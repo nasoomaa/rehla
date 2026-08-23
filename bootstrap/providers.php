@@ -12,7 +12,7 @@ use Rehla\Core\Providers\CoreServiceProvider;
 use Rehla\Customers\Providers\CustomersServiceProvider;
 use Rehla\Dashboard\Providers\DashboardServiceProvider;
 use Rehla\Datagrid\Providers\DatagridServiceProvider;
-use Rehla\ImageCache\Providers\ImageCacheServiceProvider;
+use rehla\imagecache\Providers\ImageCacheServiceProvider;
 use Rehla\Media\Providers\MediaServiceProvider;
 use Rehla\Notifications\Providers\NotificationsServiceProvider;
 use Rehla\Payment\Providers\PaymentServiceProvider;

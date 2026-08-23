@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "06bce345d6c81f24ee2c1f64ccdc3c77",
+    "content-hash": "df06a0ac032fff87938df894da889bbe",
     "packages": [
         {
             "name": "brick/math",
@@ -1053,6 +1053,150 @@
                 }
             ],
             "time": "2026-07-20T13:40:43+00:00"
+        },
+        {
+            "name": "intervention/gif",
+            "version": "4.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/gif.git",
+                "reference": "c3598a16ebe7690cd55640c44144a9df383ea73c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/gif/zipball/c3598a16ebe7690cd55640c44144a9df383ea73c",
+                "reference": "c3598a16ebe7690cd55640c44144a9df383ea73c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^2.1",
+                "phpunit/phpunit": "^10.0 || ^11.0  || ^12.0",
+                "slevomat/coding-standard": "~8.0",
+                "squizlabs/php_codesniffer": "^3.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Intervention\\Gif\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@intervention.io",
+                    "homepage": "https://intervention.io/"
+                }
+            ],
+            "description": "Native PHP GIF Encoder/Decoder",
+            "homepage": "https://github.com/intervention/gif",
+            "keywords": [
+                "animation",
+                "gd",
+                "gif",
+                "image"
+            ],
+            "support": {
+                "issues": "https://github.com/Intervention/gif/issues",
+                "source": "https://github.com/Intervention/gif/tree/4.2.4"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/interventionio",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/Intervention",
+                    "type": "github"
+                },
+                {
+                    "url": "https://ko-fi.com/interventionphp",
+                    "type": "ko_fi"
+                }
+            ],
+            "time": "2026-01-04T09:27:23+00:00"
+        },
+        {
+            "name": "intervention/image",
+            "version": "3.11.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/image.git",
+                "reference": "cf04c8dd245697f701057c13d4bfe140d584e738"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/cf04c8dd245697f701057c13d4bfe140d584e738",
+                "reference": "cf04c8dd245697f701057c13d4bfe140d584e738",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "intervention/gif": "^4.2",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.6",
+                "phpstan/phpstan": "^2.1",
+                "phpunit/phpunit": "^10.0 || ^11.0 || ^12.0",
+                "slevomat/coding-standard": "~8.0",
+                "squizlabs/php_codesniffer": "^4"
+            },
+            "suggest": {
+                "ext-exif": "Recommended to be able to read EXIF data properly."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Intervention\\Image\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@intervention.io",
+                    "homepage": "https://intervention.io"
+                }
+            ],
+            "description": "PHP Image Processing",
+            "homepage": "https://image.intervention.io",
+            "keywords": [
+                "gd",
+                "image",
+                "imagick",
+                "resize",
+                "thumbnail",
+                "watermark"
+            ],
+            "support": {
+                "issues": "https://github.com/Intervention/image/issues",
+                "source": "https://github.com/Intervention/image/tree/3.11.8"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/interventionio",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/Intervention",
+                    "type": "github"
+                },
+                {
+                    "url": "https://ko-fi.com/interventionphp",
+                    "type": "ko_fi"
+                }
+            ],
+            "time": "2026-05-01T08:20:10+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3579,41 +3723,26 @@
             "dist": {
                 "type": "path",
                 "url": "packages/rehla/dashboard",
-                "reference": "b48d28409f9ada3ee608fd93debc8f4e5abfe441"
-            },
-            "require": {
-                "laravel/framework": "^13.0",
-                "php": "^8.5",
-                "rehla/admin-users": "*",
-                "rehla/applications": "*",
-                "rehla/audit-log": "*",
-                "rehla/cart-rule": "*",
-                "rehla/catalog": "*",
-                "rehla/checkout": "*",
-                "rehla/core": "*",
-                "rehla/customers": "*",
-                "rehla/datagrid": "*",
-                "rehla/image-cache": "*",
-                "rehla/media": "*",
-                "rehla/payment": "*",
-                "rehla/sales": "*"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^11.0",
-                "pestphp/pest": "^4.0"
+                "reference": "129029f07aaaf50ec17a0adf0de3db83e9761a9e"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rehla\\Dashboard\\Providers\\DashboardServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Rehla\\Dashboard\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Rehla\\Dashboard\\Tests\\": "tests/"
-                }
-            },
-            "description": "Rehla Dashboard: Admin presentation layer — routes, controllers, views, DataGrids",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Rehla Dashboard package",
             "transport-options": {
                 "relative": true
             }
@@ -3624,63 +3753,71 @@
             "dist": {
                 "type": "path",
                 "url": "packages/rehla/datagrid",
-                "reference": "c7b004a8a99f6334d617ff969c9380e12880165a"
+                "reference": "e1d6b21a5750695c66487cb2c3cb2615259effcc"
             },
             "require": {
                 "laravel/framework": "^13.0",
-                "php": "^8.5",
+                "php": "^8.3",
                 "rehla/core": "*"
             },
-            "require-dev": {
-                "orchestra/testbench": "^11.0",
-                "pestphp/pest": "^4.0"
-            },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rehla\\DataGrid\\Providers\\DataGridServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
                 "psr-4": {
-                    "Rehla\\Datagrid\\": "src/"
+                    "Rehla\\DataGrid\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Rehla\\Datagrid\\Tests\\": "tests/"
-                }
-            },
-            "description": "Rehla DataGrid engine: query, filter, sort, pagination, mass-actions",
+            "description": "Rehla DataGrid Engine",
             "transport-options": {
                 "relative": true
             }
         },
         {
-            "name": "rehla/image-cache",
+            "name": "rehla/imagecache",
             "version": "dev-main",
             "dist": {
                 "type": "path",
-                "url": "packages/rehla/image-cache",
-                "reference": "23a7ba1e1995a02fce0a8e249d334401b8f8b971"
+                "url": "packages/rehla/imagecache",
+                "reference": "fa6d66d905db5a2af52846a758131759f5f96095"
             },
             "require": {
-                "laravel/framework": "^13.0",
-                "php": "^8.5",
-                "rehla/core": "*",
-                "rehla/media": "*"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^11.0",
-                "pestphp/pest": "^4.0"
+                "illuminate/cache": "^9|^10|^11|^12|^13",
+                "illuminate/filesystem": "^9|^10|^11|^12|^13",
+                "illuminate/routing": "^9|^10|^11|^12|^13",
+                "illuminate/support": "^9|^10|^11|^12|^13",
+                "intervention/image": "^3.0",
+                "nesbot/carbon": "^2.72.2|^3.0",
+                "php": "^8.2"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "rehla\\imagecache\\Providers\\ImageCacheServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
                 "psr-4": {
-                    "Rehla\\ImageCache\\": "src/"
+                    "rehla\\imagecache\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Rehla\\ImageCache\\Tests\\": "tests/"
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "rehla Software",
+                    "email": "fahmifareed@gmail.com"
                 }
-            },
-            "description": "Rehla ImageCache: UUID+preset-based image transformation, path-traversal-safe",
+            ],
+            "description": "Image caching extension for Intervention Image (Laravel 12 compatible, Intervention Image v3)",
             "transport-options": {
                 "relative": true
             }
@@ -11051,7 +11188,7 @@
         "rehla/customers": 20,
         "rehla/dashboard": 20,
         "rehla/datagrid": 20,
-        "rehla/image-cache": 20,
+        "rehla/imagecache": 20,
         "rehla/media": 20,
         "rehla/notifications": 20,
         "rehla/payment": 20,

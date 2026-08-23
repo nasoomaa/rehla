@@ -16,7 +16,7 @@
         "rehla/datagrid": "dev-main",
         "rehla/rule": "dev-main",
         "rehla/media": "dev-main",
-        "rehla/image-cache": "dev-main",
+        "rehla/imagecache": "dev-main",
         "rehla/customers": "dev-main",
         "rehla/admin-users": "dev-main",
         "rehla/catalog": "dev-main",
@@ -131,7 +131,7 @@
         },
         {
             "type": "path",
-            "url": "packages/rehla/image-cache"
+            "url": "packages/rehla/imagecache"
         },
         {
             "type": "path",
